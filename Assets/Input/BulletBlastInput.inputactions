@@ -1,0 +1,29 @@
+{
+    "name": "BulletBlastInput",
+    "maps": [
+        {
+            "name": "BulletBlast",
+            "id": "37f36b2e-3830-4722-803c-bdd2a9288369",
+            "actions": [],
+            "bindings": []
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard/Mouse",
+            "bindingGroup": "Keyboard/Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
