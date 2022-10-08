@@ -7,12 +7,23 @@ public class GameManager : MonoSingleton<GameManager>
 {
     void Awake()
     {
-        
-    }
-    void Start()
-    {
-        
+        PoolManager.Instance.Init();
+
+        UIManager.Instance.Init();
+
+        PlayerData.Instance.Init();
+
+        PlayerController.Instance.Init();
+
+
+        LevelGenerator.Instance.Init();
     }
 
+    
+
+    void Start()
+    {
+
+    }
 
 }
