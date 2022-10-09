@@ -8,7 +8,7 @@ public class Spawners : MonoBehaviour
 
     [SerializeField] int _offSetLine, _chanceToSpawn;
 
-    [SerializeField] float _offSetTimeSpawn = .3f;
+    [SerializeField] float _offSetTimeSpawn = .3f, _offSetPosX = 2f;
 
     [SerializeField] Spawner Spawner;
 
@@ -39,8 +39,9 @@ public class Spawners : MonoBehaviour
     IEnumerator SpawnEnnemy(float startPos, float posIncrease, int i)
     {
         float tempPos = startPos - posIncrease * i;
+        float tempPosOffSet = tempPos + Random.Range(-_offSetPosX, _offSetPosX);
 
-        Vector3 actualPos = new Vector3(tempPos, transform.position.y, 0);
+        Vector3 actualPos = new Vector3(tempPosOffSet, transform.position.y, 0);
 
         Spawner spawner = Instantiate(Spawner, transform);
 

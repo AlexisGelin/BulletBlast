@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Art Assets/Epic Toon FX/Demo/Scenes/Extras/etfx_flatground.unity.meta
+guid: 3da32ea929cfbcb4da2d97a5fecdf286
+========
+guid: 72a52a8493ec89e4c9ff89a3f5123a88
+>>>>>>>> e8f3cc8a (fix: beautify code with PowerUpManager):Assets/Scenes/PowerUpManager.unity.meta
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

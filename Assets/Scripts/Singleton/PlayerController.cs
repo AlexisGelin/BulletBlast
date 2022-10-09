@@ -40,6 +40,11 @@ public class PlayerController : MonoSingleton<PlayerController>
             _nextFire = Time.time + _fireRate;
             Shoot();
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            _playerShip.NumberOfMissile++;
+        }
     }
 
     void FixedUpdate()
