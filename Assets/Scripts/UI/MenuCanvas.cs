@@ -17,9 +17,6 @@ public class MenuCanvas : MonoBehaviour
 
     //[Header("Garage Screen")]
 
-
-
-
     // Cache
     GameObject actualMenuScreen;
     NavBarButton actualButtonNav;
@@ -28,10 +25,6 @@ public class MenuCanvas : MonoBehaviour
     {
         actualMenuScreen = FightScreen;
         actualButtonNav = FightScreenButton;
-
-        //topNavBar.UpdateNavBar();
-
-        //LoadFightScreen();
     }
 
     public void SwitchMenuScreen(GameObject toScreen)
@@ -61,8 +54,8 @@ public class MenuCanvas : MonoBehaviour
         actualButtonNav.text.DOFade(0, .1f).SetEase(Ease.OutSine);
         toBtnNav.text.DOFade(1, .1f).SetEase(Ease.OutSine);
 
-        toBtnNav.image.transform.DOMoveY(toBtnNav.image.transform.position.y + 50, .2f);
-        actualButtonNav.image.transform.DOMoveY(actualButtonNav.image.transform.position.y - 50, .2f);
+        toBtnNav.image.transform.DOMoveY(toBtnNav.image.transform.position.y + 1.5f, .2f);
+        actualButtonNav.image.transform.DOMoveY(actualButtonNav.image.transform.position.y - 1.5f, .2f);
 
         actualButtonNav = toBtnNav;
     }

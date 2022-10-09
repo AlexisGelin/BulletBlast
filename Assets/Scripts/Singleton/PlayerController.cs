@@ -54,17 +54,17 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     void Shoot()
     {
-        if (_playerShip._numberOfMissile == 1)
+        if (_playerShip.NumberOfMissile == 1)
         {
             InitBullet();
 
             return;
         }
 
-        float startRotation = _playerShip._spreadOfMissile / 2;
-        float angleIncrease = _playerShip._spreadOfMissile / (_playerShip._numberOfMissile - 1);
+        float startRotation = _playerShip.SpreadOfMissile / 2;
+        float angleIncrease = _playerShip.SpreadOfMissile / (_playerShip.NumberOfMissile - 1);
 
-        for (int i = 0; i < _playerShip._numberOfMissile; i++)
+        for (int i = 0; i < _playerShip.NumberOfMissile; i++)
         {
             float tempRotation = startRotation - angleIncrease * i;
 

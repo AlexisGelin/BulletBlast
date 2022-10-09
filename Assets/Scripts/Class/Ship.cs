@@ -5,7 +5,6 @@ using UnityEngine;
 public class Ship : MonoBehaviour
 {
     //Data
-    public int _numberOfMissile,_spreadOfMissile;
-
-
+    public int NumberOfMissile,SpreadOfMissile;
+    public Sprite Sprite;
 }
