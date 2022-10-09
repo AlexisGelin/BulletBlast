@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -288460393004508759}
   m_Layer: 0
   m_Name: Missile
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,4 +172,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trailRenderer: {fileID: 5837085512390628922}
-  _recycleBulletY: 15
+  _recycleBulletY: 12

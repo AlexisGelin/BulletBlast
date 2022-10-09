@@ -1,4 +1,5 @@
 using BaseTemplate.Behaviours;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,11 @@ public class UIManager : MonoSingleton<UIManager>
 {
     [SerializeField] CanvasGroup MenuCanvasGroup, GameCanvasGroup;
 
-    [SerializeField] GameCanvas GameCanvas;
-    [SerializeField] MenuCanvas MenuCanvas;
+    public GameCanvas GameCanvas;
+    public MenuCanvas MenuCanvas;
+    public PermCanvas PermCanvas;
+
+    [SerializeField] GameObject CoinGO;
 
     //Cache
     CanvasGroup actualCanvasGroup;
@@ -16,6 +20,7 @@ public class UIManager : MonoSingleton<UIManager>
     {
         actualCanvasGroup = MenuCanvasGroup;
         MenuCanvas.Init();
+        PermCanvas.Init();
     }
 
     public void SwitchToCanvas(CanvasGroup toCanvas)
@@ -39,5 +44,7 @@ public class UIManager : MonoSingleton<UIManager>
     public void StartGame()
     {
         SwitchToCanvas(GameCanvasGroup);
+
+        CoinGO.transform.DOMoveY(CoinGO.transform.position.y - 2.5f, .1f);
     }
 }

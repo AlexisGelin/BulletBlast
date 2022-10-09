@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class LevelGenerator : MonoSingleton<LevelGenerator>
 {
+    public List<Ennemy> EnnemyList;
+    
+    [SerializeField] Spawners _spawners;
+
     public void Init()
     {
-
+        _spawners.Init();
     }
 }

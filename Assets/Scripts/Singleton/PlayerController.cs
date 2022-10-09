@@ -9,7 +9,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 {
     [Header("References")]
     [SerializeField] Ship _playerShip;
-    [SerializeField] Transform _beforeStartTranform, _afterStartTranform, _cannonTransform;
+    [SerializeField] Transform _cannonTransform;
 
 
     //Data
@@ -44,6 +44,8 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     void FixedUpdate()
     {
+        if (_isEnter == false) return;
+
         Vector3 desiredPosition = new Vector3(worldPos.x, worldPos.y, transform.position.z);
         Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, _smoothSpeed);
         transform.position = smoothPosition;
@@ -60,7 +62,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
 
         float startRotation = _playerShip._spreadOfMissile / 2;
-        float angleIncrease = _playerShip._spreadOfMissile  / (_playerShip._numberOfMissile - 1);
+        float angleIncrease = _playerShip._spreadOfMissile / (_playerShip._numberOfMissile - 1);
 
         for (int i = 0; i < _playerShip._numberOfMissile; i++)
         {
@@ -78,15 +80,31 @@ public class PlayerController : MonoSingleton<PlayerController>
 
         bullet.transform.localPosition = _cannonTransform.position;
 
-        bullet.GetComponent<Bullet>().Init();
+        bullet.GetComponent<Missile>().Init();
 
         return bullet;
     }
 
     void EnterLevelAnimation()
     {
-        transform.DOMoveY(_beforeStartTranform.position.y, 0f);
+        transform.DOMoveY(WorldManager.Instance._afterStartTranform.position.y, 1f).SetEase(Ease.OutSine).OnComplete(() => _isEnter = true);
+    }
 
-        transform.DOMoveY(_afterStartTranform.position.y, 1f).SetEase(Ease.OutSine).OnComplete(() => _isEnter = true);
+    public void TakeDamage(bool oneShot = false)
+    {
+        if (PlayerData.Instance.Health > 0 )
+        {
+            PlayerData.Instance.UpdateHealth(-1);
+        }
+
+        UIManager.Instance.GameCanvas.GameScreen.UpdateHeart();
+        
+        if (PlayerData.Instance.Health <= 0 || oneShot)
+        {
+            GameManager.Instance.EndGame();
+
+        }
+
+
     }
 }

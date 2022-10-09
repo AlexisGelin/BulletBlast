@@ -1,14 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Missile : MonoBehaviour
 {
     [SerializeField] TrailRenderer _trailRenderer;
+
+    [SerializeField] int _damage = 1;
 
     [SerializeField] float _recycleBulletY;
 
     //Cache 
     bool _isRecycle = false;
+
+    public int Damage { get => _damage; }
 
     public void Init()
     {

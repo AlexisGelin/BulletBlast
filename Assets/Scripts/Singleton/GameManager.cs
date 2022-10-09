@@ -4,18 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameState { MENU, PLAY, END }
+
 public class GameManager : MonoSingleton<GameManager>
 {
+    public GameState gameState;
+
     void Awake()
     {
+        gameState = GameState.MENU;
+
         PoolManager.Instance.Init();
 
         UIManager.Instance.Init();
 
-        LevelGenerator.Instance.Init();
-
         Time.timeScale = 1;
-
     }
 
     public void ReloadScene()
@@ -27,7 +30,12 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void StartGame()
     {
+        gameState = GameState.PLAY;
+
+
         UIManager.Instance.StartGame();
+
+        LevelGenerator.Instance.Init();
 
         PlayerController.Instance.Init();
 
@@ -36,6 +44,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void EndGame()
     {
+        gameState = GameState.END;
+
         //UIManager.Instance.EndGame();
 
         Time.timeScale = 0;

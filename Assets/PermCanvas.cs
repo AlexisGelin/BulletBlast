@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameCanvas : MonoBehaviour
+public class PermCanvas : MonoBehaviour
 {
-    public GameScreen GameScreen;
+    public PermScreen permScreen;
     public void Init()
     {
-        GameScreen.Init();
+        permScreen.Init();
     }
 }
