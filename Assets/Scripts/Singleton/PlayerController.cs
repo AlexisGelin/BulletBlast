@@ -10,6 +10,10 @@ public class PlayerController : MonoSingleton<PlayerController>
     [Header("References")]
     [SerializeField] Ship _playerShip;
     [SerializeField] Transform _cannonTransform;
+    [SerializeField] ParticleSystem _onDestroyParticle, _onHitParticle;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+    [SerializeField] Collider2D _coll;
+
 
 
     //Data
@@ -18,10 +22,15 @@ public class PlayerController : MonoSingleton<PlayerController>
     //Cache
     Vector3 mousePos, worldPos;
     bool _isEnter = false;
+    float _maxHealth;
+    int _increaseBurstHitParticles;
+
 
     public void Init()
     {
         EnterLevelAnimation();
+
+        _maxHealth = PlayerData.Instance.Health;
     }
 
     // Update is called once per frame
@@ -97,17 +106,55 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void TakeDamage(bool oneShot = false)
     {
-        if (PlayerData.Instance.Health > 0 )
+        if (PlayerData.Instance.Health > 0)
         {
             PlayerData.Instance.UpdateHealth(-1);
         }
 
         UIManager.Instance.GameCanvas.GameScreen.UpdateHeart();
-        
+
         if (PlayerData.Instance.Health <= 0 || oneShot)
         {
             GameManager.Instance.EndGame();
 
+            _spriteRenderer.gameObject.SetActive(false);
+
+            _coll.enabled = false;
+
+            _onHitParticle.Stop();
+
+            _onDestroyParticle.Play();
+
+            enabled = false;
+        }
+        else
+        {
+            var actualBurst = _onHitParticle.emission.GetBurst(0);
+
+            if (actualBurst.count.constant <= 5) _increaseBurstHitParticles = 1;
+
+#pragma warning disable CS0618 // Le type ou le membre est obsolète
+            if (PlayerData.Instance.Health > _maxHealth / 3)
+            {
+                _onHitParticle.startColor = ColorManager.Instance.LightGrey;
+
+                if (actualBurst.count.constant <= 30) _increaseBurstHitParticles = 10;
+
+            }
+            else
+            {
+                _onHitParticle.startColor = ColorManager.Instance.White;
+
+                if (actualBurst.count.constant <= 50) _increaseBurstHitParticles = 20;
+
+
+            }
+#pragma warning restore CS0618 // Le type ou le membre est obsolète
+
+            var newBurst = new ParticleSystem.Burst(actualBurst.time, actualBurst.count.constant + _increaseBurstHitParticles);
+            _onHitParticle.emission.SetBurst(0, newBurst);
+
+            if (_onHitParticle.isPlaying == false) _onHitParticle.Play();
         }
 
 

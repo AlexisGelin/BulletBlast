@@ -6,27 +6,28 @@ using UnityEngine;
 public class Ennemy : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] GameObject _renderer;
     [SerializeField] BoxCollider2D _coll;
+    [SerializeField] SpriteRenderer _spriteRenderer;
     [SerializeField] ParticleSystem _onDestroyParticle, _onHitParticle;
-
+    [SerializeField] Transform _cannonTransform;
+    [SerializeField] EnnemyShip ennemyShipData;
 
     [Space(10)]
 
     //Data
-    [SerializeField] int _value = 1, _recycleEnnemyY;
-    [SerializeField] float _health = 3;
-
+    [SerializeField] int _recycleEnnemyY;
 
     //Cache
     bool _isReady, _isRecycle = false;
     float _maxHealth;
+    int _increaseBurstHitParticles;
 
     public void Init()
     {
         transform.DOMoveY(WorldManager.Instance._afterSpawnEnnemyPosTransform.position.y, 0.3f).OnComplete(() => _isReady = true);
 
-        _maxHealth = _health;
+        _spriteRenderer.sprite = ennemyShipData.Sprite;
+        _maxHealth = ennemyShipData.Health;
     }
 
     void Update()
@@ -37,11 +38,56 @@ public class Ennemy : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        if (ennemyShipData.isAggresive)
+        {
+            if (Time.time > ennemyShipData.NextFire)
+            {
+                ennemyShipData.NextFire = Time.time + ennemyShipData.FireRate;
+                Shoot();
+            }
+        }
     }
+
+    void Shoot()
+    {
+
+        if (ennemyShipData.NumberOfMissile == 1)
+        {
+            InitBullet();
+
+            return;
+        }
+
+        float startRotation = ennemyShipData.SpreadOfMissile / 2;
+        float angleIncrease = ennemyShipData.SpreadOfMissile / (ennemyShipData.NumberOfMissile - 1);
+
+        for (int i = 0; i < ennemyShipData.NumberOfMissile; i++)
+        {
+            float tempRotation = startRotation - angleIncrease * i;
+
+            GameObject bullet = InitBullet();
+
+            bullet.transform.rotation = Quaternion.Euler(0, 0, tempRotation);
+        }
+    }
+
+    private GameObject InitBullet()
+    {
+        GameObject bullet = PoolManager.Instance.gameobjectPoolDictionary["EnnemyMissile"].Get();
+
+        bullet.transform.localPosition = _cannonTransform.position;
+
+        bullet.GetComponent<Missile>().Init();
+
+        return bullet;
+    }
+
+
 
     void FixedUpdate()
     {
-        if (_isReady == false || _health <= 0) return;
+        if (_isReady == false || ennemyShipData.Health <= 0) return;
 
         transform.position -= new Vector3(0, .1f, 0);
     }
@@ -50,9 +96,9 @@ public class Ennemy : MonoBehaviour
     {
         if (collision.tag == "PlayerBullet")
         {
-            PlayerData.Instance.UpdateScore(_value);
+            PlayerData.Instance.UpdateScore(ennemyShipData.Value);
 
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Missile>().RecycleBullet();
 
             TakeDamage(collision.gameObject.GetComponent<Missile>().Damage);
         }
@@ -68,16 +114,14 @@ public class Ennemy : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (_health > 0)
+        if (ennemyShipData.Health > 0)
         {
-            _health -= amount;
+            ennemyShipData.Health -= amount;
         }
 
-        //UIManager.Instance.GameCanvas.GameScreen.UpdateHeart();
-
-        if (_health <= 0)
+        if (ennemyShipData.Health <= 0)
         {
-            _renderer.SetActive(false);
+            _spriteRenderer.gameObject.SetActive(false);
 
             _coll.enabled = false;
 
@@ -90,20 +134,31 @@ public class Ennemy : MonoBehaviour
         else
         {
             var actualBurst = _onHitParticle.emission.GetBurst(0);
-            var newBurst = new ParticleSystem.Burst(actualBurst.time, actualBurst.count.constant + 20f);
-            _onHitParticle.emission.SetBurst(0, newBurst);
+
+            if (actualBurst.count.constant <= 5) _increaseBurstHitParticles = 1;
 
 #pragma warning disable CS0618 // Le type ou le membre est obsolète
-            if (_health > _maxHealth / 3)
+            if (ennemyShipData.Health > _maxHealth / 3)
             {
                 _onHitParticle.startColor = ColorManager.Instance.LightGrey;
+
+                if (actualBurst.count.constant <= 30) _increaseBurstHitParticles = 10;
+
             }
             else
             {
-                _onHitParticle.startColor = ColorManager.Instance.BrightGrey;
+                _onHitParticle.startColor = ColorManager.Instance.White;
+
+                if (actualBurst.count.constant <= 50) _increaseBurstHitParticles = 20;
+
+
             }
 #pragma warning restore CS0618 // Le type ou le membre est obsolète
-            _onHitParticle.Play();
+
+            var newBurst = new ParticleSystem.Burst(actualBurst.time, actualBurst.count.constant + _increaseBurstHitParticles);
+            _onHitParticle.emission.SetBurst(0, newBurst);
+
+            if (_onHitParticle.isPlaying == false) _onHitParticle.Play();
         }
     }
 }

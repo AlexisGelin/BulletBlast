@@ -47,4 +47,6 @@ public class UIManager : MonoSingleton<UIManager>
 
         CoinGO.transform.DOMoveY(CoinGO.transform.position.y - 2.5f, .1f);
     }
+
+
 }

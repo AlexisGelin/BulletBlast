@@ -5,6 +5,6 @@ using UnityEngine;
 
 public class WorldManager : MonoSingleton<WorldManager>
 {
-    public Transform _afterStartTranform,_afterSpawnEnnemyPosTransform;
+    public Transform _afterStartTranform, _afterSpawnEnnemyPosTransform;
 
 }

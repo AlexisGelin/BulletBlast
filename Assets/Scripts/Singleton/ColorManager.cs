@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class ColorManager : MonoSingleton<ColorManager>
 {
-    public Color BrightGrey, SemiLightGrey, LightGrey, Grey, darkGrey, Yellow, Red;
+    public Color White, BrightGrey, SemiLightGrey, LightGrey, Grey, darkGrey, Yellow, Red;
 }

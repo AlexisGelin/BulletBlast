@@ -9,6 +9,8 @@ public class Missile : MonoBehaviour
 
     [SerializeField] float _recycleBulletY;
 
+    [SerializeField] bool _isEnnemyMissile;
+
     //Cache 
     bool _isRecycle = false;
 
@@ -22,28 +24,61 @@ public class Missile : MonoBehaviour
 
     void Update()
     {
-        if (transform.localPosition.y >= _recycleBulletY && _isRecycle == false)
+        if (_isEnnemyMissile)
         {
-            _isRecycle = true;
-            StartCoroutine(RecycleBullet());
+            if (transform.localPosition.y <= _recycleBulletY  && _isRecycle == false)
+            {
+                _isRecycle = true;
+                StartCoroutine(RecycleBullet());
+            }
+        } else
+        {
+            if (transform.localPosition.y >= _recycleBulletY && _isRecycle == false)
+            {
+                _isRecycle = true;
+                StartCoroutine(RecycleBullet());
+            }
         }
+
     }
 
     void FixedUpdate()
     {
-        if (transform.position.y < _recycleBulletY) transform.localPosition += (transform.up / 5);
+        if (_isEnnemyMissile)
+        {
+            if (transform.position.y > _recycleBulletY) transform.localPosition -= (transform.up / 5);
+        }
+        else
+        {
+            if (transform.position.y < _recycleBulletY) transform.localPosition += (transform.up / 5);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_isEnnemyMissile)
+        {
+            if (collision.tag == "Player")
+            {
+                StartCoroutine(RecycleBullet());
 
+                PlayerController.Instance.TakeDamage();
+            }
+        }
     }
 
-    IEnumerator RecycleBullet()
+    public IEnumerator RecycleBullet()
     {
         _trailRenderer.enabled = false;
         yield return new WaitUntil(() => _trailRenderer.enabled = false);
-        PoolManager.Instance.gameobjectPoolDictionary["Missile"].Release(gameObject);
+        if (_isEnnemyMissile)
+        {
+            PoolManager.Instance.gameobjectPoolDictionary["EnnemyMissile"].Release(gameObject);
+        }
+        else
+        {
+            PoolManager.Instance.gameobjectPoolDictionary["Missile"].Release(gameObject);
+        }
     }
 }
 

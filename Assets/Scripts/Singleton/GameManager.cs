@@ -32,7 +32,6 @@ public class GameManager : MonoSingleton<GameManager>
     {
         gameState = GameState.PLAY;
 
-
         UIManager.Instance.StartGame();
 
         LevelGenerator.Instance.Init();
@@ -46,9 +45,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         gameState = GameState.END;
 
-        //UIManager.Instance.EndGame();
+        UIManager.Instance.GameCanvas.EndGame();
 
-        Time.timeScale = 0;
     }
 
     public void SaveGame()
