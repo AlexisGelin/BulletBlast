@@ -11,7 +11,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     [Header("References")]
     [SerializeField] Transform _cannonTransform;
-    [SerializeField] ParticleSystem _onDestroyParticle, _onHitParticle;
+    [SerializeField] ParticleSystem _onDestroyParticle, _onHitParticle,_ringWhenHit;
     [SerializeField] Collider2D _coll;
 
 
@@ -150,8 +150,11 @@ public class PlayerController : MonoSingleton<PlayerController>
             _onHitParticle.emission.SetBurst(0, newBurst);
 
             if (_onHitParticle.isPlaying == false) _onHitParticle.Play();
+
         }
 
+        _ringWhenHit.Play();
+        Camera.main.DOShakePosition(.3f, .3f, 10);
 
     }
 }

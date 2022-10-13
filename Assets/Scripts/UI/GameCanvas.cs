@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +18,14 @@ public class GameCanvas : MonoBehaviour
     {
         UIManager.Instance.PermCanvas.gameObject.SetActive(false);
         GameScreen.gameObject.SetActive(false);
-        EndScreen.gameObject.SetActive(true);
         EndScreen.Init();
+        StartCoroutine(EndGameScrollDownMenu());
+    }
+
+    IEnumerator EndGameScrollDownMenu()
+    {
+        yield return new WaitForSeconds(1f);
+
+        EndScreen.gameObject.GetComponent<RectTransform>().DOAnchorPosY(0, 2f);
     }
 }

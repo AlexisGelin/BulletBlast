@@ -22,7 +22,7 @@ public class PlayerData : MonoSingleton<PlayerData>
 
     public void Init()
     {
-        _health = PlayerShip.LevelHealth + _health;
+        _health = PlayerShip.LevelHealth + 3;
         _moveSpeed = PlayerShip.MoveSpeed - (PlayerShip.LevelMoveSpeed / 80);
 
         PlayerController.Instance.SpriteRenderer.sprite = PlayerShip.Sprite;
@@ -58,7 +58,7 @@ public class PlayerData : MonoSingleton<PlayerData>
 
     public void UpdateCoin(int amount)
     {
-        _highScore += amount;
+        _coin += amount;
 
         UIManager.Instance.PermCanvas.permScreen.UpdateCoin();
     }

@@ -14,11 +14,9 @@ public class UpgradeButton : MonoBehaviour
 
     //Cache
     int price, level, maxLevel;
-    bool isLevelMax = false;
 
     public void Init()
     {
-        isLevelMax = false;
 
         #region Level
         switch (upgrade)
@@ -50,7 +48,6 @@ public class UpgradeButton : MonoBehaviour
         {
             _price.text = "MAX";
             GetComponent<Button>().interactable = false;
-            isLevelMax = true;
             return;
         }
 
@@ -69,7 +66,7 @@ public class UpgradeButton : MonoBehaviour
 
     public void UpgradeStat()
     {
-        if (price > PlayerData.Instance.Coin || isLevelMax) return;
+        if (price > PlayerData.Instance.Coin || level >= maxLevel) return;
 
         PlayerData.Instance.UpdateCoin(-price);
 
