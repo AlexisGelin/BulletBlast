@@ -32,13 +32,13 @@ public class GameManager : MonoSingleton<GameManager>
     {
         gameState = GameState.PLAY;
 
-        UIManager.Instance.StartGame();
-
         LevelGenerator.Instance.Init();
 
         PlayerController.Instance.Init();
 
         PlayerData.Instance.Init();
+
+        UIManager.Instance.StartGame();
     }
 
     public void EndGame()

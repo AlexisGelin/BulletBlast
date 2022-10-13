@@ -77,7 +77,6 @@ public class UpgradeButton : MonoBehaviour
         {
             case Upgrade.HEALTH:
                 PlayerData.Instance.PlayerShip.LevelHealth++;
-
                 break;
             case Upgrade.MOVESPEED:
                 PlayerData.Instance.PlayerShip.LevelMoveSpeed++;

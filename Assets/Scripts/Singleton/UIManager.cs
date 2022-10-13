@@ -26,6 +26,7 @@ public class UIManager : MonoSingleton<UIManager>
     public void SwitchToCanvas(CanvasGroup toCanvas)
     {
         if (actualCanvasGroup == toCanvas) return;
+
         if (toCanvas == GameCanvasGroup) GameCanvas.Init();
         if (toCanvas == MenuCanvasGroup) MenuCanvas.Init();
 
