@@ -6,16 +6,26 @@ using UnityEngine;
 public class PlayerData : MonoSingleton<PlayerData>
 {
 
-    [SerializeField] int _health = 3, _score, _highScore, _coin;
+    [SerializeField] int _health, _score, _highScore, _coin;
+
+    float _moveSpeed;
 
     public int Health { get => _health; }
     public int Score { get => _score; }
     public int HighScore { get => _highScore; }
     public int Coin { get => _coin; }
+    public float MoveSpeed { get => _moveSpeed; }
+
+    public Ship PlayerShip;
+
+
 
     public void Init()
     {
+        _health = PlayerShip.LevelHealth + _health;
+        _moveSpeed = PlayerShip.MoveSpeed - (PlayerShip.LevelMoveSpeed / 80);
 
+        PlayerController.Instance.SpriteRenderer.sprite = PlayerShip.Sprite;
     }
 
     public void UpdateScore(int amount)

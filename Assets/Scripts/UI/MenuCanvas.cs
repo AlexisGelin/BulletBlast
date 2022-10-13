@@ -11,11 +11,12 @@ public class MenuCanvas : MonoBehaviour
 
     public NavBarButton FightScreenButton;
 
-    //[Header("Fight Screen")]
+
+    [Header("Fight Screen")]
 
 
-
-    //[Header("Garage Screen")]
+    [Header("Garage Screen")]
+    public List<UpgradeButton> Upgrades;
 
     // Cache
     GameObject actualMenuScreen;
@@ -32,9 +33,8 @@ public class MenuCanvas : MonoBehaviour
         actualMenuScreen.SetActive(false);
         toScreen.SetActive(true);
 
-/*        if (toScreen == ShopScreen) LoadShopScreen();
-        if (toScreen == ShopScreen) LoadGarageScreen();
-        if (toScreen == ShopScreen) LoadFightScreen();*/
+        if (toScreen == GarageScreen) LoadGarageScreen();
+        if (toScreen == ShopScreen) LoadShopScreen();
 
         actualMenuScreen = toScreen;
 
@@ -58,5 +58,18 @@ public class MenuCanvas : MonoBehaviour
         actualButtonNav.image.transform.DOMoveY(actualButtonNav.image.transform.position.y - 1.5f, .2f);
 
         actualButtonNav = toBtnNav;
+    }
+
+    public void LoadGarageScreen()
+    {
+        foreach (var upgrade in Upgrades)
+        {
+            upgrade.Init();
+        }
+    }    
+    
+    void LoadShopScreen()
+    {
+
     }
 }

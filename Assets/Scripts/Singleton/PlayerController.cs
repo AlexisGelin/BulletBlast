@@ -7,22 +7,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoSingleton<PlayerController>
 {
+    public SpriteRenderer SpriteRenderer;
+
     [Header("References")]
-    [SerializeField] Ship _playerShip;
     [SerializeField] Transform _cannonTransform;
     [SerializeField] ParticleSystem _onDestroyParticle, _onHitParticle;
-    [SerializeField] SpriteRenderer _spriteRenderer;
     [SerializeField] Collider2D _coll;
 
 
 
     //Data
-    [SerializeField] float _nextFire = 0f, _fireRate = 2f, _smoothSpeed = 0.125f;
 
     //Cache
     Vector3 mousePos, worldPos;
     bool _isEnter = false;
-    float _maxHealth;
+    float _maxHealth, _nextFire = 0;
+
     int _increaseBurstHitParticles;
 
 
@@ -46,13 +46,8 @@ public class PlayerController : MonoSingleton<PlayerController>
 
         if (Time.time > _nextFire)
         {
-            _nextFire = Time.time + _fireRate;
+            _nextFire = Time.time + PlayerData.Instance.PlayerShip.FireRate - PlayerData.Instance.PlayerShip.LevelFireRate / 10;
             Shoot();
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            _playerShip.NumberOfMissile++;
         }
     }
 
@@ -61,24 +56,24 @@ public class PlayerController : MonoSingleton<PlayerController>
         if (_isEnter == false) return;
 
         Vector3 desiredPosition = new Vector3(worldPos.x, worldPos.y, transform.position.z);
-        Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, _smoothSpeed);
+        Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, PlayerData.Instance.MoveSpeed + PlayerData.Instance.PlayerShip.MoveSpeed / 200);
         transform.position = smoothPosition;
     }
 
 
     void Shoot()
     {
-        if (_playerShip.NumberOfMissile == 1)
+        if (PlayerData.Instance.PlayerShip.NumberOfMissile == 1)
         {
             InitBullet();
 
             return;
         }
 
-        float startRotation = _playerShip.SpreadOfMissile / 2;
-        float angleIncrease = _playerShip.SpreadOfMissile / (_playerShip.NumberOfMissile - 1);
+        float startRotation = PlayerData.Instance.PlayerShip.SpreadOfMissile / 2;
+        float angleIncrease = PlayerData.Instance.PlayerShip.SpreadOfMissile / (PlayerData.Instance.PlayerShip.NumberOfMissile - 1);
 
-        for (int i = 0; i < _playerShip.NumberOfMissile; i++)
+        for (int i = 0; i < PlayerData.Instance.PlayerShip.NumberOfMissile; i++)
         {
             float tempRotation = startRotation - angleIncrease * i;
 
@@ -117,7 +112,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         {
             GameManager.Instance.EndGame();
 
-            _spriteRenderer.gameObject.SetActive(false);
+            SpriteRenderer.gameObject.SetActive(false);
 
             _coll.enabled = false;
 

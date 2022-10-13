@@ -5,16 +5,12 @@ public class Missile : MonoBehaviour
 {
     [SerializeField] TrailRenderer _trailRenderer;
 
-    [SerializeField] int _damage = 1;
-
     [SerializeField] float _recycleBulletY;
 
     [SerializeField] bool _isEnnemyMissile;
 
     //Cache 
     bool _isRecycle = false;
-
-    public int Damage { get => _damage; }
 
     public void Init()
     {
@@ -26,12 +22,13 @@ public class Missile : MonoBehaviour
     {
         if (_isEnnemyMissile)
         {
-            if (transform.localPosition.y <= _recycleBulletY  && _isRecycle == false)
+            if (transform.localPosition.y <= _recycleBulletY && _isRecycle == false)
             {
                 _isRecycle = true;
                 StartCoroutine(RecycleBullet());
             }
-        } else
+        }
+        else
         {
             if (transform.localPosition.y >= _recycleBulletY && _isRecycle == false)
             {
@@ -69,6 +66,7 @@ public class Missile : MonoBehaviour
 
     public IEnumerator RecycleBullet()
     {
+
         _trailRenderer.enabled = false;
         yield return new WaitUntil(() => _trailRenderer.enabled = false);
         if (_isEnnemyMissile)

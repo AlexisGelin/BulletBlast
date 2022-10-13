@@ -98,9 +98,9 @@ public class Ennemy : MonoBehaviour
         {
             PlayerData.Instance.UpdateScore(ennemyShipData.Value);
 
-            collision.gameObject.GetComponent<Missile>().RecycleBullet();
+            StartCoroutine(collision.gameObject.GetComponent<Missile>().RecycleBullet());
 
-            TakeDamage(collision.gameObject.GetComponent<Missile>().Damage);
+            TakeDamage(PlayerData.Instance.PlayerShip.MissileDamage + PlayerData.Instance.PlayerShip.LevelDamage / 2);
         }
 
         if (collision.tag == "Player")
@@ -112,7 +112,7 @@ public class Ennemy : MonoBehaviour
     }
 
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if (ennemyShipData.Health > 0)
         {
