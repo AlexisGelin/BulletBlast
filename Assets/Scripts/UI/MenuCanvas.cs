@@ -12,11 +12,13 @@ public class MenuCanvas : MonoBehaviour
     public NavBarButton FightScreenButton;
 
 
-    [Header("Fight Screen")]
+    [Header("Shop Screen")]
+    public List<ItemShopButton> ItemShopButtons;
 
 
     [Header("Garage Screen")]
     public List<UpgradeButton> Upgrades;
+    public List<ShipButton> ShipButtons;
 
     // Cache
     GameObject actualMenuScreen;
@@ -66,10 +68,18 @@ public class MenuCanvas : MonoBehaviour
         {
             upgrade.Init();
         }
+
+        foreach( var shipButton in ShipButtons)
+        {
+            shipButton.Init();
+        }
     }    
     
     void LoadShopScreen()
     {
-
+        foreach (var itemShop in ItemShopButtons)
+        {
+            itemShop.Init();
+        }
     }
 }

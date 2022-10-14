@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-    //Data
-    public int NumberOfMissile, SpreadOfMissile,MissileDamage;
+    [Header("Base Data")]
     public Sprite Sprite;
-
-    public int CoeffPrice;
-
-    public int LevelHealth, LevelMoveSpeed, LevelDamage, LevelFireRate = 0;
-    public int MaxLevelHealth, MaxLevelMoveSpeed, MaxLevelDamage, MaxLevelFireRate = 3;
+    public string Name;
+    public int NumberOfMissile, SpreadOfMissile, MissileDamage;
     public float MoveSpeed, FireRate;
+
+    [Header("Garage")]
+    public int CoeffPriceForUpgrade;
+    public int LevelHealth,LevelMoveSpeed, LevelDamage, LevelFireRate;
+    public int MaxLevelHealth, MaxLevelMoveSpeed, MaxLevelDamage, MaxLevelFireRate;
+
+
+    [Header("Shop")]
+    public bool isUnlocked = false;
+    public int shipPrice;
 }

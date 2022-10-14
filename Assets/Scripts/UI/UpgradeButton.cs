@@ -55,7 +55,7 @@ public class UpgradeButton : MonoBehaviour
 
         for (int i = -1; i < level; i++)
         {
-            price += 90 + PlayerData.Instance.PlayerShip.CoeffPrice * 10;
+            price += 90 + PlayerData.Instance.PlayerShip.CoeffPriceForUpgrade * 10;
         }
 
         GetComponent<Button>().interactable = price > PlayerData.Instance.Coin ? false : true;

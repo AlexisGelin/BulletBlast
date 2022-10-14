@@ -121,6 +121,10 @@ public class Ennemy : MonoBehaviour
 
         if (ennemyShipData.Health <= 0)
         {
+            var Coll = Instantiate(CollectibleManager.Instance.GetRandomCollectible().gameObject,transform);
+
+            Coll.GetComponent<Collectible>().Init();
+
             _spriteRenderer.gameObject.SetActive(false);
 
             _coll.enabled = false;
