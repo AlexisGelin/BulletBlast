@@ -21,7 +21,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     //Cache
     Vector3 mousePos, worldPos;
     bool _isEnter = false;
-    float _maxHealth, _nextFire = 0;
+    float  _nextFire = 0;
 
     int _increaseBurstHitParticles;
 
@@ -30,7 +30,6 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         EnterLevelAnimation();
 
-        _maxHealth = PlayerData.Instance.Health;
     }
 
     // Update is called once per frame
@@ -63,7 +62,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     void Shoot()
     {
-        if (PlayerData.Instance.PlayerShip.NumberOfMissile == 1)
+        if (PlayerData.Instance.GetNumberOfMissile() == 1)
         {
             InitBullet();
 
@@ -71,9 +70,9 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
 
         float startRotation = PlayerData.Instance.PlayerShip.SpreadOfMissile / 2;
-        float angleIncrease = PlayerData.Instance.PlayerShip.SpreadOfMissile / (PlayerData.Instance.PlayerShip.NumberOfMissile - 1);
+        float angleIncrease = PlayerData.Instance.PlayerShip.SpreadOfMissile / (PlayerData.Instance.GetNumberOfMissile() - 1);
 
-        for (int i = 0; i < PlayerData.Instance.PlayerShip.NumberOfMissile; i++)
+        for (int i = 0; i < PlayerData.Instance.GetNumberOfMissile(); i++)
         {
             float tempRotation = startRotation - angleIncrease * i;
 
@@ -129,7 +128,7 @@ public class PlayerController : MonoSingleton<PlayerController>
             if (actualBurst.count.constant <= 5) _increaseBurstHitParticles = 1;
 
 #pragma warning disable CS0618 // Le type ou le membre est obsolète
-            if (PlayerData.Instance.Health > _maxHealth / 3)
+            if (PlayerData.Instance.Health > PlayerData.Instance.MaxHealth / 3)
             {
                 _onHitParticle.startColor = ColorManager.Instance.LightGrey;
 

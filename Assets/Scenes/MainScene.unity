@@ -171,6 +171,7 @@ MonoBehaviour:
   _score: 0
   _highScore: 0
   _coin: 0
+  _tempBonusOfNumberOfMissile: 0
   PlayerShip: {fileID: 403362257}
 --- !u!1 &76593688
 GameObject:
@@ -42829,6 +42830,7 @@ MonoBehaviour:
   Collectibles:
   - {fileID: 2101572324899978889, guid: c0719e6716682a148b59bfc26fee866a, type: 3}
   - {fileID: 8499732795584280906, guid: a249bed095adea145ac14ba59c330ba5, type: 3}
+  - {fileID: 3677110567933945051, guid: f9c9257704d90704cac43733e916956e, type: 3}
 --- !u!4 &669066845163158582
 Transform:
   m_ObjectHideFlags: 0

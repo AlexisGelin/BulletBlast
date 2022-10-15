@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destroyCollectibleY: -12
-  rb: {fileID: 0}
+  rb: {fileID: 7262871067785507491}
 --- !u!1 &5151844291846773627
 GameObject:
   m_ObjectHideFlags: 0

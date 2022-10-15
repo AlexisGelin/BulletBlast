@@ -132,7 +132,7 @@ public class Ennemy : MonoBehaviour
             _onDestroyParticle.Play();
 
 
-            var Coll = Instantiate(CollectibleManager.Instance.GetRandomCollectible().gameObject, transform);
+            GameObject Coll = Instantiate(CollectibleManager.Instance.GetRandomCollectible().gameObject, transform);
 
             Coll.transform.parent = WorldManager.Instance.transform;
 
