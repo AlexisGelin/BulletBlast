@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Coin : Collectible
 {
-    
+    public override void Init()
+    {
+        rb.angularVelocity = Random.Range(45,270);
+
+        base.Init();
+    }
+
     void Update()
     {
         if (transform.position.y <= _destroyCollectibleY)

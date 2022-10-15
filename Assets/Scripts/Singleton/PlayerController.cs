@@ -11,7 +11,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     [Header("References")]
     [SerializeField] Transform _cannonTransform;
-    [SerializeField] ParticleSystem _onDestroyParticle, _onHitParticle,_ringWhenHit;
+    [SerializeField] ParticleSystem _onDestroyParticle, _onHitParticle, _ringWhenHit;
     [SerializeField] Collider2D _coll;
 
 
@@ -21,9 +21,9 @@ public class PlayerController : MonoSingleton<PlayerController>
     //Cache
     Vector3 mousePos, worldPos;
     bool _isEnter = false;
-    float  _nextFire = 0;
+    float _nextFire = 0;
 
-    int _increaseBurstHitParticles;
+    int _BurstHitParticles;
 
 
     public void Init()
@@ -123,37 +123,42 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
         else
         {
-            var actualBurst = _onHitParticle.emission.GetBurst(0);
-
-            if (actualBurst.count.constant <= 5) _increaseBurstHitParticles = 1;
-
-#pragma warning disable CS0618 // Le type ou le membre est obsolète
-            if (PlayerData.Instance.Health > PlayerData.Instance.MaxHealth / 3)
-            {
-                _onHitParticle.startColor = ColorManager.Instance.LightGrey;
-
-                if (actualBurst.count.constant <= 30) _increaseBurstHitParticles = 10;
-
-            }
-            else
-            {
-                _onHitParticle.startColor = ColorManager.Instance.White;
-
-                if (actualBurst.count.constant <= 50) _increaseBurstHitParticles = 20;
-
-
-            }
-#pragma warning restore CS0618 // Le type ou le membre est obsolète
-
-            var newBurst = new ParticleSystem.Burst(actualBurst.time, actualBurst.count.constant + _increaseBurstHitParticles);
-            _onHitParticle.emission.SetBurst(0, newBurst);
-
-            if (_onHitParticle.isPlaying == false) _onHitParticle.Play();
+            UpdateHitParticle();
 
         }
 
         _ringWhenHit.Play();
         Camera.main.DOShakePosition(.3f, .3f, 10);
 
+    }
+
+    public void UpdateHitParticle()
+    {
+
+        if (PlayerData.Instance.Health > PlayerData.Instance.MaxHealth / 3 * 2)
+        {
+            if (_onHitParticle.isPlaying == true) _onHitParticle.Stop();
+            return;
+        }
+
+        var actualBurst = _onHitParticle.emission.GetBurst(0);
+
+#pragma warning disable CS0618 // Le type ou le membre est obsolète
+        if (PlayerData.Instance.Health > PlayerData.Instance.MaxHealth / 3)
+        {
+            _onHitParticle.startColor = ColorManager.Instance.LightGrey;
+            _BurstHitParticles = 10;
+        }
+        else
+        {
+            _onHitParticle.startColor = ColorManager.Instance.White;
+            _BurstHitParticles = 40;
+        }
+#pragma warning restore CS0618 // Le type ou le membre est obsolète
+
+        var newBurst = new ParticleSystem.Burst(actualBurst.time, _BurstHitParticles);
+        _onHitParticle.emission.SetBurst(0, newBurst);
+
+        if (_onHitParticle.isPlaying == false) _onHitParticle.Play();
     }
 }

@@ -87,6 +87,8 @@ public class SavingSystem : MonoBehaviour
     Dictionary<string, object> LoadFile(string saveFile)
     {
         string path = GetPath(saveFile);
+        print($"Loading file from {path}");
+
         if (!File.Exists(path))
             return new Dictionary<string, object>();
 

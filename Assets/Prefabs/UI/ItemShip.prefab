@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 1248997706327416686}
   - component: {fileID: 8884104994384376423}
   - component: {fileID: 1829258907197508886}
-  - component: {fileID: 403362257}
   m_Layer: 0
   m_Name: ItemShip
   m_TagString: Untagged
@@ -186,34 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77db9649127e64e48b3cdcc3e01c3174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ship: {fileID: 403362257}
---- !u!114 &403362257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1248997706327416685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61ea28d7d9cdb97439fcee3d03126768, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NumberOfMissile: 1
-  SpreadOfMissile: 20
-  MissileDamage: 1
-  Sprite: {fileID: 21300000, guid: dbf4eeccffe18f94f9a196cc4814db3d, type: 3}
-  CoeffPrice: 1
-  LevelHealth: 0
-  LevelMoveSpeed: 0
-  LevelDamage: 0
-  LevelFireRate: 0
-  MaxLevelHealth: 3
-  MaxLevelMoveSpeed: 3
-  MaxLevelDamage: 3
-  MaxLevelFireRate: 3
-  MoveSpeed: 0.07
-  FireRate: 0.9
+  _ship: {fileID: 0}
 --- !u!1 &1248997706410386127
 GameObject:
   m_ObjectHideFlags: 0

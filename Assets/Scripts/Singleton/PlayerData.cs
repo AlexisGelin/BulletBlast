@@ -1,12 +1,15 @@
 using BaseTemplate.Behaviours;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData : MonoSingleton<PlayerData>
+public class PlayerData : MonoSingleton<PlayerData> , ISavable
 {
 
-    [SerializeField] int _health, _score, _highScore, _coin, _tempBonusOfNumberOfMissile;
+    [SerializeField] int _health, _score, _highScore, _coin;
+
+    int _tempBonusOfNumberOfMissile;
 
     float _moveSpeed, _maxHealth;
 
@@ -70,6 +73,7 @@ public class PlayerData : MonoSingleton<PlayerData>
 
         _health += amount;
 
+        PlayerController.Instance.UpdateHitParticle();
         UIManager.Instance.GameCanvas.GameScreen.UpdateHeart();
     }
 
@@ -99,6 +103,34 @@ public class PlayerData : MonoSingleton<PlayerData>
 
     public int GetNumberOfMissile()
     {
-        return PlayerShip.NumberOfMissile + _tempBonusOfNumberOfMissile;
+        if (PlayerShip.NumberOfMissile + _tempBonusOfNumberOfMissile >= 12 ) return 12;
+        else return PlayerShip.NumberOfMissile + _tempBonusOfNumberOfMissile;
     }
+
+    public object CaptureState()
+    {
+        var saveData = new PlayerDataSave()
+        {
+            HighScore = _highScore,
+            Coin = _coin,
+        };
+
+        return saveData;
+    }
+
+    public void RestoreState(object state)
+    {
+        var saveData = (PlayerDataSave)state;
+
+        _highScore = saveData.HighScore;
+        _coin = saveData.Coin;
+
+    }
+}
+
+
+[Serializable]
+public class PlayerDataSave
+{
+    public int HighScore, Coin;
 }

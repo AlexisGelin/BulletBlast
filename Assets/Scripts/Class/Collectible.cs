@@ -6,11 +6,18 @@ using UnityEngine;
 public abstract class Collectible : MonoBehaviour
 {
     public int _destroyCollectibleY = -12;
-    public  Rigidbody2D rb;
+    public Rigidbody2D rb;
 
-    public void  Init()
+    //Cache
+    bool _left;
+
+    public virtual void Init()
     {
-        rb.AddForce(new Vector2(Random.Range(-5, 5), Random.Range(5, 10)), ForceMode2D.Impulse);
+        _left = Random.Range(0,2) == 1 ? false : true;
+
+        if (_left) rb.AddForce(new Vector2(Random.Range(-7, -3), Random.Range(5, 10)), ForceMode2D.Impulse);
+        else rb.AddForce(new Vector2(Random.Range(3, 7), Random.Range(5, 10)), ForceMode2D.Impulse);
+
     }
 
 }

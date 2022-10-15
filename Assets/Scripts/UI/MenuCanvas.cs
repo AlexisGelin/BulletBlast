@@ -64,17 +64,22 @@ public class MenuCanvas : MonoBehaviour
 
     public void LoadGarageScreen()
     {
+        LoadAllUpgrades();
+
+        foreach (var shipButton in ShipButtons)
+        {
+            shipButton.Init();
+        }
+    }
+
+    public void LoadAllUpgrades()
+    {
         foreach (var upgrade in Upgrades)
         {
             upgrade.Init();
         }
+    }
 
-        foreach( var shipButton in ShipButtons)
-        {
-            shipButton.Init();
-        }
-    }    
-    
     void LoadShopScreen()
     {
         foreach (var itemShop in ItemShopButtons)

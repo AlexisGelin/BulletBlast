@@ -32,6 +32,8 @@ public class Ennemy : MonoBehaviour
 
     void Update()
     {
+        if (ennemyShipData.Health <= 0) return;
+
         if (transform.position.y <= _recycleEnnemyY && _isRecycle == false)
         {
             _isRecycle = true;

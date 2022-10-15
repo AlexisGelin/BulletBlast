@@ -14,6 +14,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         gameState = GameState.MENU;
 
+       LoadGame();
+
         PoolManager.Instance.Init();
 
         UIManager.Instance.Init();
@@ -53,12 +55,12 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void SaveGame()
     {
-        SavingSystem.i.Save("BulletBlastSave");
+        SavingSystem.i.Save("BBSave");
     }
 
     public void LoadGame()
     {
-        SavingSystem.i.Load("BulletBlastSave");
+        SavingSystem.i.Load("BBSave");
     }
 
     void OnApplicationQuit()

@@ -86,6 +86,6 @@ public class UpgradeButton : MonoBehaviour
                 break;
         }
 
-        Init();
+        UIManager.Instance.MenuCanvas.LoadAllUpgrades();
     }
 }
