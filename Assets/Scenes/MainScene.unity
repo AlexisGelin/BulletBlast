@@ -10521,6 +10521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _afterStartTranform: {fileID: 253813021}
   _afterSpawnEnnemyPosTransform: {fileID: 1995857462}
+  colThickness: 4
+  zPosition: 0
 --- !u!1001 &238502589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34551,7 +34553,6 @@ Transform:
   - {fileID: 386633016}
   - {fileID: 596567230}
   - {fileID: 851694036}
-  - {fileID: 1715901922}
   m_Father: {fileID: 1118988742}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36107,37 +36108,6 @@ MonoBehaviour:
   _score: {fileID: 1975716232}
   _ennemyKilled: {fileID: 1468631832}
   _coinCollected: {fileID: 1771780503}
---- !u!1 &1715901921
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1715901922}
-  m_Layer: 0
-  m_Name: WolrdSpaceSimulation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1715901922
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1715901921}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1462218830}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1737498763
 GameObject:
   m_ObjectHideFlags: 0
@@ -42857,7 +42827,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collectibles:
-  - {fileID: 2519404881735190454, guid: c0719e6716682a148b59bfc26fee866a, type: 3}
+  - {fileID: 2101572324899978889, guid: c0719e6716682a148b59bfc26fee866a, type: 3}
+  - {fileID: 8499732795584280906, guid: a249bed095adea145ac14ba59c330ba5, type: 3}
 --- !u!4 &669066845163158582
 Transform:
   m_ObjectHideFlags: 0
@@ -43140,6 +43111,10 @@ PrefabInstance:
     - target: {fileID: 403362257, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
       propertyPath: isUnlocked
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 403362257, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: NumberOfMissile
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1248997706327416685, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
       propertyPath: m_Name

@@ -18,6 +18,8 @@ public class GameManager : MonoSingleton<GameManager>
 
         UIManager.Instance.Init();
 
+        WorldManager.Instance.Init();
+
         Time.timeScale = 1;
     }
 

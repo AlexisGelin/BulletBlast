@@ -94,6 +94,8 @@ public class Ennemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (ennemyShipData.Health <= 0) return;
+
         if (collision.tag == "PlayerBullet")
         {
             PlayerData.Instance.UpdateScore(ennemyShipData.Value);
@@ -121,10 +123,6 @@ public class Ennemy : MonoBehaviour
 
         if (ennemyShipData.Health <= 0)
         {
-            var Coll = Instantiate(CollectibleManager.Instance.GetRandomCollectible().gameObject,transform);
-
-            Coll.GetComponent<Collectible>().Init();
-
             _spriteRenderer.gameObject.SetActive(false);
 
             _coll.enabled = false;
@@ -132,6 +130,15 @@ public class Ennemy : MonoBehaviour
             _onHitParticle.Stop();
 
             _onDestroyParticle.Play();
+
+
+            var Coll = Instantiate(CollectibleManager.Instance.GetRandomCollectible().gameObject, transform);
+
+            Coll.transform.parent = WorldManager.Instance.transform;
+
+            Coll.GetComponent<Collectible>().Init();
+
+
 
             Destroy(gameObject, _onDestroyParticle.main.duration);
         }
