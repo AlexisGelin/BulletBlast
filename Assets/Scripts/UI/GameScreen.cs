@@ -8,6 +8,7 @@ public class GameScreen : MonoBehaviour
 {
     [SerializeField] TMP_Text _score, _highScore;
     [SerializeField] List<Image> _hearts;
+    [SerializeField] SliderBar surchargeBar;
 
     PlayerData playerData;
 
@@ -45,5 +46,14 @@ public class GameScreen : MonoBehaviour
         _highScore.text = playerData.HighScore.ToString();
     }
 
+    public void InitSurchargeBar()
+    {
+        if (surchargeBar.gameObject.activeSelf == false) surchargeBar.gameObject.SetActive(true);
 
+        surchargeBar.SetMaxBar(100, 100);
+
+        surchargeBar.TimeToSlide = PlayerData.Instance.TimeToVanishSurcharge;
+
+        surchargeBar.SetBar(0,true);
+    }
 }

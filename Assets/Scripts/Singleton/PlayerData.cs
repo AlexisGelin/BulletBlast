@@ -4,10 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData : MonoSingleton<PlayerData> , ISavable
+public class PlayerData : MonoSingleton<PlayerData>, ISavable
 {
 
-    [SerializeField] int _health, _score, _highScore, _coin;
+    [SerializeField] int _health, _score, _highScore, _coin, _collectedCoinInRun;
 
     int _tempBonusOfNumberOfMissile;
 
@@ -20,8 +20,13 @@ public class PlayerData : MonoSingleton<PlayerData> , ISavable
     public float MoveSpeed { get => _moveSpeed; }
     public int TempBonusOfNumberOfMissile { get => _tempBonusOfNumberOfMissile; }
     public float MaxHealth { get => _maxHealth; }
+    public int CollectedCoinInRun { get => _collectedCoinInRun; }
+
+    public int EnnemyKilledInRun;
+    public float TimeToVanishSurcharge = 10f;
 
     public Ship PlayerShip;
+
 
 
     //Cache
@@ -88,6 +93,7 @@ public class PlayerData : MonoSingleton<PlayerData> , ISavable
     public void UpdateCoin(int amount)
     {
         _coin += amount;
+        _collectedCoinInRun += amount;
 
         UIManager.Instance.PermCanvas.permScreen.UpdateCoin();
     }
@@ -96,14 +102,16 @@ public class PlayerData : MonoSingleton<PlayerData> , ISavable
     {
         _tempBonusOfNumberOfMissile += amount;
 
-        TimeBeforeVanishSurcharge = 15f;
+        TimeBeforeVanishSurcharge = TimeToVanishSurcharge;
+
+        UIManager.Instance.GameCanvas.GameScreen.InitSurchargeBar();
 
         tempBonusOfMissile = true;
     }
 
     public int GetNumberOfMissile()
     {
-        if (PlayerShip.NumberOfMissile + _tempBonusOfNumberOfMissile >= 12 ) return 12;
+        if (PlayerShip.NumberOfMissile + _tempBonusOfNumberOfMissile >= 12) return 12;
         else return PlayerShip.NumberOfMissile + _tempBonusOfNumberOfMissile;
     }
 

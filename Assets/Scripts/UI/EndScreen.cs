@@ -26,11 +26,11 @@ public class EndScreen : MonoBehaviour
 
     public void UpdateEnnemyKilled()
     {
-        _ennemyKilled.text = playerData.Score.ToString();
+        _ennemyKilled.text = playerData.EnnemyKilledInRun.ToString();
     }
 
     public void UpdateCoinCollected()
     {
-        _coinCollected.text = playerData.Score.ToString();
+        _coinCollected.text = playerData.CollectedCoinInRun.ToString();
     }
 }

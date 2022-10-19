@@ -123,29 +123,9 @@ public class Ennemy : MonoBehaviour
             ennemyShipData.Health -= amount;
         }
 
-        if (ennemyShipData.Health <= 0)
+        if (ennemyShipData.Health > 0)
         {
-            _spriteRenderer.gameObject.SetActive(false);
 
-            _coll.enabled = false;
-
-            _onHitParticle.Stop();
-
-            _onDestroyParticle.Play();
-
-
-            GameObject Coll = Instantiate(CollectibleManager.Instance.GetRandomCollectible().gameObject, transform);
-
-            Coll.transform.parent = WorldManager.Instance.transform;
-
-            Coll.GetComponent<Collectible>().Init();
-
-
-
-            Destroy(gameObject, _onDestroyParticle.main.duration);
-        }
-        else
-        {
             var actualBurst = _onHitParticle.emission.GetBurst(0);
 
             if (actualBurst.count.constant <= 5) _increaseBurstHitParticles = 1;
@@ -172,6 +152,29 @@ public class Ennemy : MonoBehaviour
             _onHitParticle.emission.SetBurst(0, newBurst);
 
             if (_onHitParticle.isPlaying == false) _onHitParticle.Play();
+        }
+        else
+        {
+
+            _spriteRenderer.gameObject.SetActive(false);
+
+            _coll.enabled = false;
+
+            _onHitParticle.Stop();
+
+            _onDestroyParticle.Play();
+
+
+            GameObject Coll = Instantiate(CollectibleManager.Instance.GetRandomCollectible().gameObject, transform);
+
+            Coll.transform.parent = WorldManager.Instance.transform;
+
+            Coll.GetComponent<Collectible>().Init();
+
+            PlayerData.Instance.EnnemyKilledInRun++;
+
+            Destroy(gameObject, _onDestroyParticle.main.duration);
+
         }
     }
 }

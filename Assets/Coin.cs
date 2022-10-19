@@ -23,7 +23,7 @@ public class Coin : Collectible
     {
         if (collision.tag == "Player")
         {
-            PlayerData.Instance.UpdateCoin(1);
+            PlayerData.Instance.UpdateCoin(10);
             Destroy(gameObject);
         }
 
