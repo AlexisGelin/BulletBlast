@@ -16,6 +16,8 @@ public class GameManager : MonoSingleton<GameManager>
 
        LoadGame();
 
+        PlayerData.Instance.Init();
+
         PoolManager.Instance.Init();
 
         UIManager.Instance.Init();
@@ -40,7 +42,6 @@ public class GameManager : MonoSingleton<GameManager>
 
         PlayerController.Instance.Init();
 
-        PlayerData.Instance.Init();
 
         UIManager.Instance.StartGame();
     }

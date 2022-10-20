@@ -9,15 +9,15 @@ public class PlayerData : MonoSingleton<PlayerData>, ISavable
 
     [SerializeField] int _health, _score, _highScore, _coin, _collectedCoinInRun;
 
-    int _tempBonusOfNumberOfMissile;
+    int _tempBonusOfNumberOfMissile, _maxNumberOfBullet;
 
-    float _moveSpeed, _maxHealth;
+    float _maxHealth;
 
     public int Health { get => _health; }
     public int Score { get => _score; }
     public int HighScore { get => _highScore; }
     public int Coin { get => _coin; }
-    public float MoveSpeed { get => _moveSpeed; }
+    public int MaxNumberOfBulle { get => _maxNumberOfBullet; }
     public int TempBonusOfNumberOfMissile { get => _tempBonusOfNumberOfMissile; }
     public float MaxHealth { get => _maxHealth; }
     public int CollectedCoinInRun { get => _collectedCoinInRun; }
@@ -36,7 +36,7 @@ public class PlayerData : MonoSingleton<PlayerData>, ISavable
     public void Init()
     {
         _health = PlayerShip.LevelHealth + 3;
-        _moveSpeed = PlayerShip.MoveSpeed - (PlayerShip.LevelMoveSpeed / 80);
+        _maxNumberOfBullet = PlayerShip.MaxBullet + PlayerShip.LevelMaxBullet;
         _maxHealth = Health;
 
 
@@ -100,7 +100,10 @@ public class PlayerData : MonoSingleton<PlayerData>, ISavable
 
     public void UpdateNumberOfMissile(int amount)
     {
+
         _tempBonusOfNumberOfMissile += amount;
+
+        if (_tempBonusOfNumberOfMissile > _maxNumberOfBullet) _tempBonusOfNumberOfMissile = _maxNumberOfBullet;
 
         TimeBeforeVanishSurcharge = TimeToVanishSurcharge;
 
@@ -121,6 +124,7 @@ public class PlayerData : MonoSingleton<PlayerData>, ISavable
         {
             HighScore = _highScore,
             Coin = _coin,
+            ShipID = PlayerShip.ID,
         };
 
         return saveData;
@@ -132,7 +136,7 @@ public class PlayerData : MonoSingleton<PlayerData>, ISavable
 
         _highScore = saveData.HighScore;
         _coin = saveData.Coin;
-
+        PlayerShip = ShipManager.Instance.shipList[saveData.ShipID - 1];
     }
 }
 
@@ -140,5 +144,5 @@ public class PlayerData : MonoSingleton<PlayerData>, ISavable
 [Serializable]
 public class PlayerDataSave
 {
-    public int HighScore, Coin;
+    public int HighScore, Coin, ShipID;
 }

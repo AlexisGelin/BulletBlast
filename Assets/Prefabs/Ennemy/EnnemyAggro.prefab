@@ -19,6 +19,22 @@ PrefabInstance:
       propertyPath: _cannonTransform
       value: 
       objectReference: {fileID: 163294364021491009}
+    - target: {fileID: 2872087182733645382, guid: 7df15cefcde05754f86d12ad9e23818c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872087182733645382, guid: 7df15cefcde05754f86d12ad9e23818c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872087182733645382, guid: 7df15cefcde05754f86d12ad9e23818c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872087182733645382, guid: 7df15cefcde05754f86d12ad9e23818c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 3228909139952249598, guid: 7df15cefcde05754f86d12ad9e23818c, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.35

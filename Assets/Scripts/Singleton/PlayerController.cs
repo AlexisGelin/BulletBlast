@@ -55,7 +55,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         if (_isEnter == false) return;
 
         Vector3 desiredPosition = new Vector3(worldPos.x, worldPos.y, transform.position.z);
-        Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, PlayerData.Instance.MoveSpeed + PlayerData.Instance.PlayerShip.MoveSpeed / 200);
+        Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, PlayerData.Instance.PlayerShip.MoveSpeed);
         transform.position = smoothPosition;
     }
 

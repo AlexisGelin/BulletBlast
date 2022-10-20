@@ -27,6 +27,13 @@ public class Ennemy : MonoBehaviour
         transform.DOMoveY(WorldManager.Instance._afterSpawnEnnemyPosTransform.position.y, 0.3f).OnComplete(() => _isReady = true);
 
         _spriteRenderer.sprite = ennemyShipData.Sprite;
+
+        if (ennemyShipData.isMeteor)
+        {
+            int size = Random.Range(1, 5);
+            transform.localScale = new Vector3(size,size,size);
+            GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-90, 90);
+        }
         _maxHealth = ennemyShipData.Health;
     }
 
@@ -109,7 +116,9 @@ public class Ennemy : MonoBehaviour
 
         if (collision.tag == "Player")
         {
-            PlayerController.Instance.TakeDamage();
+
+            if (ennemyShipData.isMeteor) PlayerController.Instance.TakeDamage(true);
+            else PlayerController.Instance.TakeDamage();
 
             Destroy(gameObject);
         }
@@ -118,6 +127,7 @@ public class Ennemy : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+
         if (ennemyShipData.Health > 0)
         {
             ennemyShipData.Health -= amount;
@@ -125,6 +135,7 @@ public class Ennemy : MonoBehaviour
 
         if (ennemyShipData.Health > 0)
         {
+            if (ennemyShipData.isMeteor) return;
 
             var actualBurst = _onHitParticle.emission.GetBurst(0);
 
@@ -164,17 +175,17 @@ public class Ennemy : MonoBehaviour
 
             _onDestroyParticle.Play();
 
+            Destroy(gameObject, _onDestroyParticle.main.duration);
+
+            if (ennemyShipData.isMeteor) return;
+
+            PlayerData.Instance.EnnemyKilledInRun++;
 
             GameObject Coll = Instantiate(CollectibleManager.Instance.GetRandomCollectible().gameObject, transform);
 
             Coll.transform.parent = WorldManager.Instance.transform;
 
             Coll.GetComponent<Collectible>().Init();
-
-            PlayerData.Instance.EnnemyKilledInRun++;
-
-            Destroy(gameObject, _onDestroyParticle.main.duration);
-
         }
     }
 }

@@ -3,15 +3,16 @@ using UnityEngine;
 public class Ship : MonoBehaviour, ISavable
 {
     [Header("Base Data")]
+    public int ID;
     public Sprite Sprite;
     public string Name;
-    public int NumberOfMissile, SpreadOfMissile, MissileDamage;
+    public int NumberOfMissile,MaxBullet, SpreadOfMissile, MissileDamage;
     public float MoveSpeed, FireRate;
 
     [Header("Garage")]
     public int CoeffPriceForUpgrade;
-    public int LevelHealth, LevelMoveSpeed, LevelDamage, LevelFireRate;
-    public int MaxLevelHealth, MaxLevelMoveSpeed, MaxLevelDamage, MaxLevelFireRate;
+    public int LevelHealth, LevelMaxBullet, LevelDamage, LevelFireRate;
+    public int MaxLevelHealth, MaxLevelMaxBullet, MaxLevelDamage, MaxLevelFireRate;
 
     [Header("Shop")]
     public bool isUnlocked = false;
@@ -22,7 +23,7 @@ public class Ship : MonoBehaviour, ISavable
         var saveData = new ShipSaveData()
         {
             LevelHealth = LevelHealth,
-            LevelMoveSpeed = LevelMoveSpeed,
+            LevelMaxBullet = LevelMaxBullet,
             LevelDamage = LevelDamage,
             LevelFireRate = LevelFireRate,
         };
@@ -35,7 +36,7 @@ public class Ship : MonoBehaviour, ISavable
         var saveData = (ShipSaveData)state;
 
         LevelHealth = saveData.LevelHealth;
-        LevelMoveSpeed = saveData.LevelMoveSpeed;
+        LevelMaxBullet = saveData.LevelMaxBullet;
         LevelDamage = saveData.LevelDamage;
         LevelFireRate = saveData.LevelFireRate;
     }
@@ -44,5 +45,5 @@ public class Ship : MonoBehaviour, ISavable
 [System.Serializable]
 public class ShipSaveData
 {
-    public int LevelHealth, LevelMoveSpeed, LevelDamage, LevelFireRate;
+    public int LevelHealth, LevelMaxBullet, LevelDamage, LevelFireRate;
 }

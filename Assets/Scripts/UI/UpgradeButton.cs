@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
-    private enum Upgrade { HEALTH, MOVESPEED, DAMAGE, FIRERATE }
+    private enum Upgrade { HEALTH, MAXBULLET, DAMAGE, FIRERATE }
 
     [SerializeField] TMP_Text _price, _level;
     [SerializeField] Upgrade upgrade;
@@ -25,9 +25,9 @@ public class UpgradeButton : MonoBehaviour
                 level = PlayerData.Instance.PlayerShip.LevelHealth;
                 maxLevel = PlayerData.Instance.PlayerShip.MaxLevelHealth;
                 break;
-            case Upgrade.MOVESPEED:
-                level = PlayerData.Instance.PlayerShip.LevelMoveSpeed;
-                maxLevel = PlayerData.Instance.PlayerShip.MaxLevelMoveSpeed;
+            case Upgrade.MAXBULLET:
+                level = PlayerData.Instance.PlayerShip.LevelMaxBullet;
+                maxLevel = PlayerData.Instance.PlayerShip.MaxLevelMaxBullet;
                 break;
             case Upgrade.DAMAGE:
                 level = PlayerData.Instance.PlayerShip.LevelDamage;
@@ -75,8 +75,8 @@ public class UpgradeButton : MonoBehaviour
             case Upgrade.HEALTH:
                 PlayerData.Instance.PlayerShip.LevelHealth++;
                 break;
-            case Upgrade.MOVESPEED:
-                PlayerData.Instance.PlayerShip.LevelMoveSpeed++;
+            case Upgrade.MAXBULLET:
+                PlayerData.Instance.PlayerShip.LevelMaxBullet++;
                 break;
             case Upgrade.DAMAGE:
                 PlayerData.Instance.PlayerShip.LevelDamage++;

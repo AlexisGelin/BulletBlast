@@ -171,7 +171,7 @@ MonoBehaviour:
   _health: 3
   _score: 0
   _highScore: 0
-  _coin: 0
+  _coin: 1000
   _collectedCoinInRun: 0
   EnnemyKilledInRun: 0
   TimeToVanishSurcharge: 10
@@ -11314,6 +11314,124 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
   m_PrefabInstance: {fileID: 1248997706729688736}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &425947806
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 498366304}
+    m_Modifications:
+    - target: {fileID: 1248997705009557099, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7faebb786ec8e7747a500a55a5612f18, type: 3}
+    - target: {fileID: 1248997706327416685, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_Name
+      value: ItemShip (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416685, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829258907197508886, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: _ship
+      value: 
+      objectReference: {fileID: 858935997}
+    - target: {fileID: 7135571519463945866, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+      propertyPath: m_text
+      value: Maxime
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+--- !u!224 &425947807 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1248997706327416686, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+  m_PrefabInstance: {fileID: 425947806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &447845860
 GameObject:
   m_ObjectHideFlags: 0
@@ -16407,6 +16525,7 @@ RectTransform:
   - {fileID: 403362254}
   - {fileID: 780242736}
   - {fileID: 238502590}
+  - {fileID: 425947807}
   m_Father: {fileID: 277540194}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22733,22 +22852,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ea28d7d9cdb97439fcee3d03126768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 3
   Sprite: {fileID: 21300000, guid: 6a3d984c1abe0a64ea440fb297f72074, type: 3}
   Name: Charlie
-  NumberOfMissile: 1
-  SpreadOfMissile: 3
+  NumberOfMissile: 3
+  MaxBullet: 7
+  SpreadOfMissile: 50
   MissileDamage: 2
-  MoveSpeed: 0.05
-  FireRate: 1
-  CoeffPriceForUpgrade: 3
+  MoveSpeed: 0.4
+  FireRate: 0.4
+  CoeffPriceForUpgrade: 10
   LevelHealth: 0
-  LevelMoveSpeed: 0
+  LevelMaxBullet: 0
   LevelDamage: 0
   LevelFireRate: 0
   MaxLevelHealth: 7
-  MaxLevelMoveSpeed: 4
-  MaxLevelDamage: 3
-  MaxLevelFireRate: 4
+  MaxLevelMaxBullet: 10
+  MaxLevelDamage: 10
+  MaxLevelFireRate: 10
   isUnlocked: 0
   shipPrice: 300
 --- !u!114 &785335749
@@ -22796,6 +22917,7 @@ Transform:
   - {fileID: 1161922751}
   - {fileID: 901456003}
   - {fileID: 785335747}
+  - {fileID: 858935995}
   m_Father: {fileID: 1126788271}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22815,6 +22937,7 @@ MonoBehaviour:
   - {fileID: 1161922752}
   - {fileID: 901456004}
   - {fileID: 785335748}
+  - {fileID: 858935997}
 --- !u!1 &851694035
 GameObject:
   m_ObjectHideFlags: 0
@@ -22860,12 +22983,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4f132ccc432394a96284d2dc19b05b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfLine: 6
-  _offSetLine: 2
+  NumberOfLine: 4
+  SpawnTime: 0.5
+  _offSetLine: 1
   _chanceToSpawn: 0
   _offSetTimeSpawn: 1
-  _offSetPosX: 2
-  Spawner: {fileID: 2437285475086363903, guid: 3a3265a2fa2d5c641b264c8b447aeb11, type: 3}
+  _offSetPosX: 1
   _nextSpawn: 2
   _spawnRate: 2
 --- !u!61 &851694038
@@ -22901,6 +23024,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1685468109}
     m_Modifications:
+    - target: {fileID: 2214294050020241805, guid: 3234745b6c51f734c9a2c7c03d58a4d7, type: 3}
+      propertyPath: _ship
+      value: 
+      objectReference: {fileID: 858935997}
+    - target: {fileID: 7914039163232104056, guid: 3234745b6c51f734c9a2c7c03d58a4d7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bed33db595b4f83479a749fdbf743480, type: 3}
     - target: {fileID: 7914039163490015774, guid: 3234745b6c51f734c9a2c7c03d58a4d7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -22991,7 +23122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7914039163490015775, guid: 3234745b6c51f734c9a2c7c03d58a4d7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3234745b6c51f734c9a2c7c03d58a4d7, type: 3}
@@ -23076,6 +23207,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855289850}
   m_CullTransparentMesh: 1
+--- !u!1 &858935994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858935995}
+  - component: {fileID: 858935997}
+  - component: {fileID: 858935996}
+  m_Layer: 0
+  m_Name: ShipMaxime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &858935995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858935994}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 808777216}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &858935996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858935994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4881f89f8b930e34489bbb86116ccd4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: dd974a81-76b8-4d1a-ba57-301d3bddb720
+--- !u!114 &858935997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858935994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ea28d7d9cdb97439fcee3d03126768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 4
+  Sprite: {fileID: 21300000, guid: bed33db595b4f83479a749fdbf743480, type: 3}
+  Name: Maxime
+  NumberOfMissile: 4
+  MaxBullet: 20
+  SpreadOfMissile: 40
+  MissileDamage: 10
+  MoveSpeed: 1.25
+  FireRate: 0.2
+  CoeffPriceForUpgrade: 3
+  LevelHealth: 0
+  LevelMaxBullet: 0
+  LevelDamage: 0
+  LevelFireRate: 0
+  MaxLevelHealth: 7
+  MaxLevelMaxBullet: 4
+  MaxLevelDamage: 3
+  MaxLevelFireRate: 4
+  isUnlocked: 1
+  shipPrice: 1000
 --- !u!1 &898494653
 GameObject:
   m_ObjectHideFlags: 0
@@ -23197,20 +23406,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ea28d7d9cdb97439fcee3d03126768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 2
   Sprite: {fileID: 21300000, guid: f31120967a73ef045994e17f7b0e624b, type: 3}
   Name: Beta
   NumberOfMissile: 2
-  SpreadOfMissile: 10
+  MaxBullet: 6
+  SpreadOfMissile: 20
   MissileDamage: 1
-  MoveSpeed: 0.1
-  FireRate: 0.7
+  MoveSpeed: 0.3
+  FireRate: 0.3
   CoeffPriceForUpgrade: 0
   LevelHealth: 0
-  LevelMoveSpeed: 0
+  LevelMaxBullet: 0
   LevelDamage: 0
   LevelFireRate: 0
   MaxLevelHealth: 2
-  MaxLevelMoveSpeed: 6
+  MaxLevelMaxBullet: 5
   MaxLevelDamage: 2
   MaxLevelFireRate: 4
   isUnlocked: 0
@@ -23933,6 +24144,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1131527438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2214294050020241805, guid: 3234745b6c51f734c9a2c7c03d58a4d7, type: 3}
+  m_PrefabInstance: {fileID: 852330077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929861bd3d9de2544b20780e8cd5bd8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1157318023
 GameObject:
   m_ObjectHideFlags: 0
@@ -28863,20 +29085,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ea28d7d9cdb97439fcee3d03126768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 1
   Sprite: {fileID: 21300000, guid: dbf4eeccffe18f94f9a196cc4814db3d, type: 3}
   Name: Alpha
   NumberOfMissile: 1
+  MaxBullet: 5
   SpreadOfMissile: 20
   MissileDamage: 1
-  MoveSpeed: 0.07
-  FireRate: 0.5
+  MoveSpeed: 0.2
+  FireRate: 0.4
   CoeffPriceForUpgrade: 0
   LevelHealth: 0
-  LevelMoveSpeed: 0
+  LevelMaxBullet: 0
   LevelDamage: 0
   LevelFireRate: 0
   MaxLevelHealth: 3
-  MaxLevelMoveSpeed: 3
+  MaxLevelMaxBullet: 3
   MaxLevelDamage: 3
   MaxLevelFireRate: 3
   isUnlocked: 1
@@ -29469,6 +29693,7 @@ MonoBehaviour:
   ItemShopButtons:
   - {fileID: 7914039163983838658}
   - {fileID: 933541410}
+  - {fileID: 1131527438}
   Upgrades:
   - {fileID: 1680954062}
   - {fileID: 1326962497039964492}
@@ -29478,6 +29703,7 @@ MonoBehaviour:
   - {fileID: 978030867}
   - {fileID: 780242738}
   - {fileID: 615597504}
+  - {fileID: 1417468622}
 --- !u!1 &1305467123
 GameObject:
   m_ObjectHideFlags: 0
@@ -29897,6 +30123,17 @@ MonoBehaviour:
   - {fileID: 898494655}
   - {fileID: 654278265}
   surchargeBar: {fileID: 1607189050}
+--- !u!114 &1417468622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1829258907197508886, guid: 723b56ffa52952a42809e9dbf2216f52, type: 3}
+  m_PrefabInstance: {fileID: 425947806}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77db9649127e64e48b3cdcc3e01c3174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1432090209
 GameObject:
   m_ObjectHideFlags: 0
@@ -34963,7 +35200,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1326962496289735592, guid: 57cdbde2a4749f04495acfd574fef0ad, type: 3}
       propertyPath: m_Name
-      value: UpgradeMoveSpeed
+      value: UpgradeMaxBullet
       objectReference: {fileID: 0}
     - target: {fileID: 1326962496289735595, guid: 57cdbde2a4749f04495acfd574fef0ad, type: 3}
       propertyPath: m_Pivot.x
@@ -35075,11 +35312,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1326962497018883041, guid: 57cdbde2a4749f04495acfd574fef0ad, type: 3}
       propertyPath: m_text
-      value: Upgrade the speed of the ship to reach cursor
+      value: Upgrade the maximum of bullet u can have in a single shoot
       objectReference: {fileID: 0}
     - target: {fileID: 1326962497469899437, guid: 57cdbde2a4749f04495acfd574fef0ad, type: 3}
       propertyPath: m_text
-      value: Move Speed
+      value: Max bullet
       objectReference: {fileID: 0}
     - target: {fileID: 7417651415165301640, guid: 57cdbde2a4749f04495acfd574fef0ad, type: 3}
       propertyPath: upgrade
@@ -35351,8 +35588,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnnemyList:
-  - {fileID: 78051777004058293, guid: 7df15cefcde05754f86d12ad9e23818c, type: 3}
+  - {fileID: 651465143002043783, guid: 24772e052836cea44a613fc9b2d04e5c, type: 3}
   - {fileID: 3431192300206987530, guid: 81a9309d82e8c65418ce9e7a9aa75d1e, type: 3}
+  - {fileID: 78051777004058293, guid: 7df15cefcde05754f86d12ad9e23818c, type: 3}
   _spawners: {fileID: 851694037}
 --- !u!1 &1513241790
 GameObject:
