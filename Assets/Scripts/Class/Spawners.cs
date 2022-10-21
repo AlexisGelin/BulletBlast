@@ -60,7 +60,7 @@ public class Spawners : MonoBehaviour
 
     int GetNumberOfLine()
     {
-        return NumberOfLine + Mathf.RoundToInt(PlayerData.Instance.Score / 100) + Mathf.RoundToInt(PlayerData.Instance.TempBonusOfNumberOfMissile / 2);
+        return NumberOfLine + Mathf.RoundToInt(PlayerData.Instance.Score / 100) + Mathf.RoundToInt(PlayerData.Instance.TempBonusOfNumberOfMissile);
     }
 
     float GetSpawnTime()
