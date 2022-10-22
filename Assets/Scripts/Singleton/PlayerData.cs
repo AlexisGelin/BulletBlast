@@ -93,7 +93,7 @@ public class PlayerData : MonoSingleton<PlayerData>, ISavable
     public void UpdateCoin(int amount)
     {
         _coin += amount;
-        _collectedCoinInRun += amount;
+        if (GameManager.Instance.gameState == GameState.PLAY) _collectedCoinInRun += amount;
 
         UIManager.Instance.PermCanvas.permScreen.UpdateCoin();
     }

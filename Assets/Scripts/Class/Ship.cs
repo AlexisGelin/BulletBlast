@@ -6,7 +6,7 @@ public class Ship : MonoBehaviour, ISavable
     public int ID;
     public Sprite Sprite;
     public string Name;
-    public int NumberOfMissile,MaxBullet, SpreadOfMissile, MissileDamage;
+    public int NumberOfMissile, MaxBullet, SpreadOfMissile, MissileDamage;
     public float MoveSpeed, FireRate;
 
     [Header("Garage")]
@@ -26,6 +26,8 @@ public class Ship : MonoBehaviour, ISavable
             LevelMaxBullet = LevelMaxBullet,
             LevelDamage = LevelDamage,
             LevelFireRate = LevelFireRate,
+
+            IsUnlocked = isUnlocked,
         };
 
         return saveData;
@@ -39,6 +41,8 @@ public class Ship : MonoBehaviour, ISavable
         LevelMaxBullet = saveData.LevelMaxBullet;
         LevelDamage = saveData.LevelDamage;
         LevelFireRate = saveData.LevelFireRate;
+
+        isUnlocked = saveData.IsUnlocked;
     }
 }
 
@@ -46,4 +50,6 @@ public class Ship : MonoBehaviour, ISavable
 public class ShipSaveData
 {
     public int LevelHealth, LevelMaxBullet, LevelDamage, LevelFireRate;
+    public bool IsUnlocked;
+
 }

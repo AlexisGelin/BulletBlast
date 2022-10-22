@@ -7,6 +7,8 @@ public abstract class Collectible : MonoBehaviour
 {
     public int _destroyCollectibleY = -12;
     public Rigidbody2D rb;
+    public ParticleSystem OnCollectFX;
+
 
     //Cache
     bool _left;

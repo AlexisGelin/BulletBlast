@@ -11,6 +11,8 @@ public class PoolManager : MonoSingleton<PoolManager>
 
     public Dictionary<string, ObjectPool<GameObject>> gameobjectPoolDictionary;
 
+    public Stack<GameObject> pools = new Stack<GameObject>();
+
     public void Init()
     {
         gameobjectPoolDictionary = new Dictionary<string, ObjectPool<GameObject>>();
@@ -37,14 +39,27 @@ public class PoolManager : MonoSingleton<PoolManager>
 
             for (int i = 0; i < pool.size; i++)
             {
-                var GO = _pool.Get();
-                GO.gameObject.SetActive(false);
+                pools.Push(_pool.Get());
+            }
+
+            for (int i = 0; i < pool.size; i++)
+            {
+                _pool.Release(pools.Peek());
+                pools.Pop();
             }
 
             gameobjectPoolDictionary.Add(pool.tag, _pool);
         }
     }
+
+    private void Update()
+    {
+        Debug.Log("Player missile all = " + gameobjectPoolDictionary["PlayerMissile"].CountAll + "Inactive = " + gameobjectPoolDictionary["PlayerMissile"].CountInactive);
+        Debug.Log("Ennemy missile all = " + gameobjectPoolDictionary["EnnemyMissile"].CountAll + "Inactive = " + gameobjectPoolDictionary["EnnemyMissile"].CountInactive);
+    }
 }
+
+
 
 [System.Serializable]
 public class Pool

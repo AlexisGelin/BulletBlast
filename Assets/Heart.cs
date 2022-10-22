@@ -17,6 +17,12 @@ public class Heart : Collectible
         if (collision.tag == "Player")
         {
             PlayerData.Instance.UpdateHealth(1);
+
+            OnCollectFX.Play();
+            OnCollectFX.transform.parent = collision.transform;
+            OnCollectFX.transform.localPosition = Vector3.zero;
+            PlayerController.Instance.DestroyParticle(OnCollectFX);
+
             Destroy(gameObject);
         }
 

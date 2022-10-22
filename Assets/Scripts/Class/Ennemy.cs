@@ -19,7 +19,7 @@ public class Ennemy : MonoBehaviour
 
     //Cache
     bool _isReady, _isRecycle = false;
-    float _maxHealth;
+    float _maxHealth,_health;
     int _increaseBurstHitParticles;
 
     public void Init()
@@ -34,12 +34,13 @@ public class Ennemy : MonoBehaviour
             transform.localScale = new Vector3(size,size,size);
             GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-90, 90);
         }
-        _maxHealth = ennemyShipData.Health;
+        _health = ennemyShipData.getBaseHealth();
+        _maxHealth = _health;
     }
 
     void Update()
     {
-        if (ennemyShipData.Health <= 0) return;
+        if (_health <= 0) return;
 
         if (transform.position.y <= _recycleEnnemyY && _isRecycle == false)
         {
@@ -96,14 +97,14 @@ public class Ennemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_isReady == false || ennemyShipData.Health <= 0) return;
+        if (_isReady == false || _health <= 0) return;
 
         transform.position -= new Vector3(0, .1f, 0);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ennemyShipData.Health <= 0) return;
+        if (_health <= 0) return;
 
         if (collision.tag == "PlayerBullet")
         {
@@ -128,12 +129,12 @@ public class Ennemy : MonoBehaviour
     public void TakeDamage(float amount)
     {
 
-        if (ennemyShipData.Health > 0)
+        if (_health > 0)
         {
-            ennemyShipData.Health -= amount;
+            _health -= amount;
         }
 
-        if (ennemyShipData.Health > 0)
+        if (_health > 0)
         {
             if (ennemyShipData.isMeteor) return;
 
@@ -142,7 +143,7 @@ public class Ennemy : MonoBehaviour
             if (actualBurst.count.constant <= 5) _increaseBurstHitParticles = 1;
 
 #pragma warning disable CS0618 // Le type ou le membre est obsolète
-            if (ennemyShipData.Health > _maxHealth / 3)
+            if (ennemyShipData._health > _maxHealth / 3)
             {
                 _onHitParticle.startColor = ColorManager.Instance.LightGrey;
 

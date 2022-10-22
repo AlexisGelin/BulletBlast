@@ -14,6 +14,7 @@ public class Missile : MonoBehaviour
 
     public void Init()
     {
+        _isRecycle = false;
         _trailRenderer.enabled = true;
         transform.rotation = Quaternion.Euler(0, 0, 0);
     }
@@ -66,16 +67,18 @@ public class Missile : MonoBehaviour
 
     public IEnumerator RecycleBullet()
     {
-
         _trailRenderer.enabled = false;
-        yield return new WaitUntil(() => _trailRenderer.enabled = false);
+
+        yield return new WaitForSeconds(2f);
+
         if (_isEnnemyMissile)
         {
             PoolManager.Instance.gameobjectPoolDictionary["EnnemyMissile"].Release(gameObject);
         }
         else
         {
-            PoolManager.Instance.gameobjectPoolDictionary["Missile"].Release(gameObject);
+            PoolManager.Instance.gameobjectPoolDictionary["PlayerMissile"].Release(gameObject);
+
         }
     }
 }

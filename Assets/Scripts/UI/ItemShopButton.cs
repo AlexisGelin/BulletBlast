@@ -26,6 +26,7 @@ public class ItemShopButton : MonoBehaviour
         {
             _ship.isUnlocked = true;
             PlayerData.Instance.UpdateCoin(-_ship.shipPrice);
+            GetComponent<Button>().interactable = false;
         }
     }
 }

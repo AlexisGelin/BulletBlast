@@ -6,7 +6,7 @@ public class Coin : Collectible
 {
     public override void Init()
     {
-        rb.angularVelocity = Random.Range(45,270);
+        rb.angularVelocity = Random.Range(45, 270);
 
         base.Init();
     }
@@ -24,6 +24,13 @@ public class Coin : Collectible
         if (collision.tag == "Player")
         {
             PlayerData.Instance.UpdateCoin(10);
+
+            OnCollectFX.Play();
+            OnCollectFX.transform.parent = collision.transform;
+            OnCollectFX.transform.localPosition = Vector3.zero;
+            PlayerController.Instance.DestroyParticle(OnCollectFX);
+
+
             Destroy(gameObject);
         }
 

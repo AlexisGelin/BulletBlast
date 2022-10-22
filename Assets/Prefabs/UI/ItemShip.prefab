@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ship: {fileID: 0}
+  _shipName: {fileID: 7135571519463945866}
+  _shipImage: {fileID: 1248997705009557099}
 --- !u!1 &1248997706410386127
 GameObject:
   m_ObjectHideFlags: 0

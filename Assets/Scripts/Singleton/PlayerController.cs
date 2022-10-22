@@ -84,7 +84,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private GameObject InitBullet()
     {
-        GameObject bullet = PoolManager.Instance.gameobjectPoolDictionary["Missile"].Get();
+        GameObject bullet = PoolManager.Instance.gameobjectPoolDictionary["PlayerMissile"].Get();
 
         bullet.transform.localPosition = _cannonTransform.position;
 
@@ -160,5 +160,10 @@ public class PlayerController : MonoSingleton<PlayerController>
         _onHitParticle.emission.SetBurst(0, newBurst);
 
         if (_onHitParticle.isPlaying == false) _onHitParticle.Play();
+    }
+
+    public void DestroyParticle(ParticleSystem ps)
+    {
+        Destroy(ps, ps.main.duration);
     }
 }

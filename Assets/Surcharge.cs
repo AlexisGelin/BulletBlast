@@ -17,6 +17,12 @@ public class Surcharge : Collectible
         if (collision.tag == "Player")
         {
             PlayerData.Instance.UpdateNumberOfMissile(1);
+
+            OnCollectFX.Play();
+            OnCollectFX.transform.parent = collision.transform;
+            OnCollectFX.transform.localPosition = Vector3.zero;
+            PlayerController.Instance.DestroyParticle(OnCollectFX);
+
             Destroy(gameObject);
         }
 

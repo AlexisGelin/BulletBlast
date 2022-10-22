@@ -5369,8 +5369,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -604.99994, y: 60}
-  m_SizeDelta: {x: -1210, y: 120}
+  m_AnchoredPosition: {x: -605, y: 59.299988}
+  m_SizeDelta: {x: -1210, y: 118.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &160618554
 MonoBehaviour:
@@ -17065,7 +17065,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -735, y: 415.00003}
+  m_AnchoredPosition: {x: -735, y: 415}
   m_SizeDelta: {x: 200, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &572479311
@@ -22165,12 +22165,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameobjectPools:
-  - tag: Missile
+  - tag: PlayerMissile
     prefab: {fileID: 5837085512390628925, guid: 6f0c0056faafbbd488b4421d60123d69, type: 3}
-    size: 50
+    size: 200
   - tag: EnnemyMissile
     prefab: {fileID: 5837085512390628925, guid: 5f821f95b2f2e9d4992d9a74a610b936, type: 3}
-    size: 50
+    size: 200
 --- !u!1001 &614533465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22860,7 +22860,7 @@ MonoBehaviour:
   SpreadOfMissile: 50
   MissileDamage: 2
   MoveSpeed: 0.4
-  FireRate: 0.4
+  FireRate: 0.3
   CoeffPriceForUpgrade: 10
   LevelHealth: 0
   LevelMaxBullet: 0
@@ -23596,7 +23596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -150.00003}
+  m_AnchoredPosition: {x: 175, y: -150}
   m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &949846645
@@ -29093,7 +29093,7 @@ MonoBehaviour:
   SpreadOfMissile: 20
   MissileDamage: 1
   MoveSpeed: 0.2
-  FireRate: 0.4
+  FireRate: 0.3
   CoeffPriceForUpgrade: 0
   LevelHealth: 0
   LevelMaxBullet: 0
@@ -36182,9 +36182,9 @@ RectTransform:
   m_Father: {fileID: 1329534730}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960.00006, y: -50}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1655437637
@@ -36671,8 +36671,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 605.0001, y: 60}
-  m_SizeDelta: {x: -1210, y: 120}
+  m_AnchoredPosition: {x: 612.3, y: 60}
+  m_SizeDelta: {x: -1195.4, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1737498765
 MonoBehaviour:
@@ -43238,9 +43238,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collectibles:
-  - {fileID: 2101572324899978889, guid: c0719e6716682a148b59bfc26fee866a, type: 3}
   - {fileID: 8499732795584280906, guid: a249bed095adea145ac14ba59c330ba5, type: 3}
   - {fileID: 3677110567933945051, guid: f9c9257704d90704cac43733e916956e, type: 3}
+  - {fileID: 2101572324899978889, guid: c0719e6716682a148b59bfc26fee866a, type: 3}
 --- !u!4 &669066845163158582
 Transform:
   m_ObjectHideFlags: 0
