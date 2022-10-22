@@ -110,7 +110,7 @@ public class Ennemy : MonoBehaviour
         {
             PlayerData.Instance.UpdateScore(ennemyShipData.Value);
 
-            StartCoroutine(collision.gameObject.GetComponent<Missile>().RecycleBullet());
+            collision.gameObject.GetComponent<Missile>().RecycleBullet();
 
             TakeDamage(PlayerData.Instance.PlayerShip.MissileDamage + PlayerData.Instance.PlayerShip.LevelDamage / 2);
         }

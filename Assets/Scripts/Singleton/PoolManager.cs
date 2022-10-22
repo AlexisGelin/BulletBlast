@@ -48,6 +48,8 @@ public class PoolManager : MonoSingleton<PoolManager>
                 pools.Pop();
             }
 
+            pools.Clear();
+
             gameobjectPoolDictionary.Add(pool.tag, _pool);
         }
     }

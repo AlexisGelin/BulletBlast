@@ -15,7 +15,9 @@ public class Missile : MonoBehaviour
     public void Init()
     {
         _isRecycle = false;
-        _trailRenderer.enabled = true;
+        _trailRenderer.Clear();
+
+
         transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -26,7 +28,7 @@ public class Missile : MonoBehaviour
             if (transform.localPosition.y <= _recycleBulletY && _isRecycle == false)
             {
                 _isRecycle = true;
-                StartCoroutine(RecycleBullet());
+                RecycleBullet();
             }
         }
         else
@@ -34,7 +36,7 @@ public class Missile : MonoBehaviour
             if (transform.localPosition.y >= _recycleBulletY && _isRecycle == false)
             {
                 _isRecycle = true;
-                StartCoroutine(RecycleBullet());
+                RecycleBullet();
             }
         }
 
@@ -58,28 +60,17 @@ public class Missile : MonoBehaviour
         {
             if (collision.tag == "Player")
             {
-                StartCoroutine(RecycleBullet());
+                RecycleBullet();
 
                 PlayerController.Instance.TakeDamage();
             }
         }
     }
 
-    public IEnumerator RecycleBullet()
+    public void RecycleBullet()
     {
-        _trailRenderer.enabled = false;
-
-        yield return new WaitForSeconds(2f);
-
-        if (_isEnnemyMissile)
-        {
-            PoolManager.Instance.gameobjectPoolDictionary["EnnemyMissile"].Release(gameObject);
-        }
-        else
-        {
-            PoolManager.Instance.gameobjectPoolDictionary["PlayerMissile"].Release(gameObject);
-
-        }
+        if (_isEnnemyMissile) PoolManager.Instance.gameobjectPoolDictionary["EnnemyMissile"].Release(gameObject);
+        else PoolManager.Instance.gameobjectPoolDictionary["PlayerMissile"].Release(gameObject);
     }
 }
 

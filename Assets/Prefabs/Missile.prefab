@@ -172,6 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trailRenderer: {fileID: 5837085512390628922}
-  _damage: 1
   _recycleBulletY: 12
   _isEnnemyMissile: 0
