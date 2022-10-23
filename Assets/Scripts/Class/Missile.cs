@@ -1,57 +1,20 @@
-using System.Collections;
 using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
     [SerializeField] TrailRenderer _trailRenderer;
-
-    [SerializeField] float _recycleBulletY;
-
     [SerializeField] bool _isEnnemyMissile;
-
-    //Cache 
-    bool _isRecycle = false;
 
     public void Init()
     {
-        _isRecycle = false;
         _trailRenderer.Clear();
-
-
         transform.rotation = Quaternion.Euler(0, 0, 0);
-    }
-
-    void Update()
-    {
-        if (_isEnnemyMissile)
-        {
-            if (transform.localPosition.y <= _recycleBulletY && _isRecycle == false)
-            {
-                _isRecycle = true;
-                RecycleBullet();
-            }
-        }
-        else
-        {
-            if (transform.localPosition.y >= _recycleBulletY && _isRecycle == false)
-            {
-                _isRecycle = true;
-                RecycleBullet();
-            }
-        }
-
     }
 
     void FixedUpdate()
     {
-        if (_isEnnemyMissile)
-        {
-            if (transform.position.y > _recycleBulletY) transform.localPosition -= (transform.up / 5);
-        }
-        else
-        {
-            if (transform.position.y < _recycleBulletY) transform.localPosition += (transform.up / 5);
-        }
+        if (_isEnnemyMissile) transform.localPosition -= (transform.up / 5);
+        else transform.localPosition += (transform.up / 5);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -64,6 +27,12 @@ public class Missile : MonoBehaviour
 
                 PlayerController.Instance.TakeDamage();
             }
+        }
+
+        if (collision.tag == "WorldBorder")
+        {
+            Debug.Log("WorldBorder");
+            RecycleBullet();
         }
     }
 

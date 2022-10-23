@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +7,7 @@ public class ShipButton : MonoBehaviour
     [SerializeField] Ship _ship;
     [SerializeField] TMP_Text _shipName;
     [SerializeField] Image _shipImage;
-    
+
 
     public void Init()
     {

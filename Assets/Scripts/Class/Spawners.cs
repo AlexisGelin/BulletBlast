@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawners : MonoBehaviour
@@ -11,15 +10,8 @@ public class Spawners : MonoBehaviour
 
     [SerializeField] float _offSetTimeSpawn = .3f, _offSetPosX = 2f;
 
-    //Data
-    [SerializeField] float _nextSpawn = 0f, _spawnRate = 2f;
-
-    //Cache
-
     public void Init()
     {
-        _nextSpawn = Time.time + _spawnRate;
-
         int numberOfSpawner = Random.Range(GetNumberOfLine() - _offSetLine, GetNumberOfLine() + _offSetLine);
 
         float width = GetComponent<BoxCollider2D>().size.x;
@@ -48,15 +40,6 @@ public class Spawners : MonoBehaviour
         ennemy.Init();
     }
 
-    void Update()
-    {
-        if (GameManager.Instance.gameState != GameState.PLAY) return;
-
-        if (Time.time > _nextSpawn)
-        {
-            Init();
-        }
-    }
 
     int GetNumberOfLine()
     {

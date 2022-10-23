@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemShopButton : MonoBehaviour
 {
-    [SerializeField] TMP_Text title,price;
+    [SerializeField] TMP_Text title, price;
     [SerializeField] Image preview;
 
     [SerializeField] Ship _ship;

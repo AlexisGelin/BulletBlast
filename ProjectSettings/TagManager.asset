@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ennemy
-  - Meteor
   - PlayerBullet
   - ScreenBorder
+  - WorldBorder
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,4 @@
 using BaseTemplate.Behaviours;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -44,20 +43,13 @@ public class PoolManager : MonoSingleton<PoolManager>
 
             for (int i = 0; i < pool.size; i++)
             {
-                _pool.Release(pools.Peek());
-                pools.Pop();
+                _pool.Release(pools.Pop());
             }
 
             pools.Clear();
 
             gameobjectPoolDictionary.Add(pool.tag, _pool);
         }
-    }
-
-    private void Update()
-    {
-        Debug.Log("Player missile all = " + gameobjectPoolDictionary["PlayerMissile"].CountAll + "Inactive = " + gameobjectPoolDictionary["PlayerMissile"].CountInactive);
-        Debug.Log("Ennemy missile all = " + gameobjectPoolDictionary["EnnemyMissile"].CountAll + "Inactive = " + gameobjectPoolDictionary["EnnemyMissile"].CountInactive);
     }
 }
 

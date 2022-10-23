@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+public enum EnnemyShipType { Passive, Agressive, Meteor }
 
 public class EnnemyShip : MonoBehaviour
 {
+
     public int NumberOfMissile, SpreadOfMissile, Value;
     public Sprite Sprite;
-    public int _health = 3;
-    public bool isAggresive = false, isMeteor = false;
-    public float NextFire = 0f, FireRate = 2f, SmoothSpeed = 0.125f;
+    public EnnemyShipType EnnemyType;
+    public float FireRate = 2f, SmoothSpeed = 0.125f;
+
+    [SerializeField] int _health = 3;
 
     public int getBaseHealth()
     {

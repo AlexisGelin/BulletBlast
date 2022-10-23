@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : Collectible
@@ -9,14 +7,6 @@ public class Coin : Collectible
         rb.angularVelocity = Random.Range(45, 270);
 
         base.Init();
-    }
-
-    void Update()
-    {
-        if (transform.position.y <= _destroyCollectibleY)
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,5 +28,8 @@ public class Coin : Collectible
         {
             rb.velocity = new Vector2(rb.velocity.x * -1, rb.velocity.y);
         }
+
+        if (collision.tag == "WorldBorder") Destroy(gameObject);
+
     }
 }

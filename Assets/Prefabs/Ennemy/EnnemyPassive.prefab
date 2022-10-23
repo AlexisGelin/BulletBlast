@@ -9963,7 +9963,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: a8e8c2030c1ebed48b50b8b7c0492288, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15093,7 +15093,6 @@ MonoBehaviour:
   _onHitParticle: {fileID: 4159149397351949022}
   _cannonTransform: {fileID: 3228909139952249598}
   ennemyShipData: {fileID: 4296245975221527697}
-  _recycleEnnemyY: -12
 --- !u!61 &8888505460514826317
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15157,12 +15156,10 @@ MonoBehaviour:
   SpreadOfMissile: 0
   Value: 1
   Sprite: {fileID: 21300000, guid: aab0fcad416c7984d8fb80e0c9101612, type: 3}
-  Health: 3
-  isAggresive: 0
-  isMeteor: 0
-  NextFire: 0
+  EnnemyType: 0
   FireRate: 2
   SmoothSpeed: 0.125
+  _health: 3
 --- !u!1 &8672479450705485133
 GameObject:
   m_ObjectHideFlags: 0

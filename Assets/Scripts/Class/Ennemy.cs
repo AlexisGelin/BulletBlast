@@ -1,6 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ennemy : MonoBehaviour
@@ -14,12 +12,9 @@ public class Ennemy : MonoBehaviour
 
     [Space(10)]
 
-    //Data
-    [SerializeField] int _recycleEnnemyY;
-
     //Cache
-    bool _isReady, _isRecycle = false;
-    float _maxHealth,_health;
+    bool _isReady;
+    float _maxHealth, _health;
     int _increaseBurstHitParticles;
 
     public void Init()
@@ -28,44 +23,27 @@ public class Ennemy : MonoBehaviour
 
         _spriteRenderer.sprite = ennemyShipData.Sprite;
 
-        if (ennemyShipData.isMeteor)
+        if (ennemyShipData.EnnemyType == EnnemyShipType.Meteor)
         {
             int size = Random.Range(1, 5);
-            transform.localScale = new Vector3(size,size,size);
+            transform.localScale = new Vector3(size, size, size);
             GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-90, 90);
         }
+
+        if (ennemyShipData.EnnemyType == EnnemyShipType.Agressive)
+        {
+            InvokeRepeating("Shoot", ennemyShipData.FireRate, ennemyShipData.FireRate);
+        }
+
         _health = ennemyShipData.getBaseHealth();
         _maxHealth = _health;
     }
 
-    void Update()
-    {
-        if (_health <= 0) return;
-
-        if (transform.position.y <= _recycleEnnemyY && _isRecycle == false)
-        {
-            _isRecycle = true;
-
-            Destroy(gameObject);
-        }
-
-        if (ennemyShipData.isAggresive)
-        {
-            if (Time.time > ennemyShipData.NextFire)
-            {
-                ennemyShipData.NextFire = Time.time + ennemyShipData.FireRate;
-                Shoot();
-            }
-        }
-    }
-
     void Shoot()
     {
-
         if (ennemyShipData.NumberOfMissile == 1)
         {
             InitBullet();
-
             return;
         }
 
@@ -93,8 +71,6 @@ public class Ennemy : MonoBehaviour
         return bullet;
     }
 
-
-
     void FixedUpdate()
     {
         if (_isReady == false || _health <= 0) return;
@@ -117,33 +93,33 @@ public class Ennemy : MonoBehaviour
 
         if (collision.tag == "Player")
         {
-
-            if (ennemyShipData.isMeteor) PlayerController.Instance.TakeDamage(true);
+            if (ennemyShipData.EnnemyType == EnnemyShipType.Meteor) PlayerController.Instance.TakeDamage(true);
             else PlayerController.Instance.TakeDamage();
 
             Destroy(gameObject);
         }
+
+        if (collision.tag == "WorldBorder") Destroy(gameObject);
+
     }
 
 
     public void TakeDamage(float amount)
     {
 
-        if (_health > 0)
-        {
-            _health -= amount;
-        }
+        if (_health > 0) _health -= amount;
+
 
         if (_health > 0)
         {
-            if (ennemyShipData.isMeteor) return;
+            if (ennemyShipData.EnnemyType == EnnemyShipType.Meteor) return;
 
             var actualBurst = _onHitParticle.emission.GetBurst(0);
 
             if (actualBurst.count.constant <= 5) _increaseBurstHitParticles = 1;
 
 #pragma warning disable CS0618 // Le type ou le membre est obsolète
-            if (ennemyShipData._health > _maxHealth / 3)
+            if (_health > _maxHealth / 3)
             {
                 _onHitParticle.startColor = ColorManager.Instance.LightGrey;
 
@@ -178,7 +154,7 @@ public class Ennemy : MonoBehaviour
 
             Destroy(gameObject, _onDestroyParticle.main.duration);
 
-            if (ennemyShipData.isMeteor) return;
+            if (ennemyShipData.EnnemyType == EnnemyShipType.Meteor) return;
 
             PlayerData.Instance.EnnemyKilledInRun++;
 

@@ -1,17 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Surcharge : Collectible
 {
-    void Update()
-    {
-        if (transform.position.y <= _destroyCollectibleY)
-        {
-            Destroy(gameObject);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -29,6 +19,11 @@ public class Surcharge : Collectible
         if (collision.tag == "ScreenBorder")
         {
             rb.velocity = new Vector2(rb.velocity.x * -1, rb.velocity.y);
+        }
+
+        if (collision.tag == "WorldBorder")
+        {
+            Destroy(gameObject);
         }
     }
 }

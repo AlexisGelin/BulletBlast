@@ -1,5 +1,4 @@
 using BaseTemplate.Behaviours;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +13,8 @@ public class LevelGenerator : MonoSingleton<LevelGenerator>
 
     public void Init()
     {
-        _spawners.Init();
+        InvokeRepeating("InitSpawners", 0, 2);
+
     }
 
     public Ennemy GetEnnemy()
@@ -26,5 +26,11 @@ public class LevelGenerator : MonoSingleton<LevelGenerator>
         else ennemy = EnnemyList[2];
 
         return ennemy;
+    }
+
+    void InitSpawners()
+    {
+        if (GameManager.Instance.gameState != GameState.PLAY) return;
+        _spawners.Init();
     }
 }

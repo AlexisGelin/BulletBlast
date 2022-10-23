@@ -1,7 +1,5 @@
 using BaseTemplate.Behaviours;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerData : MonoSingleton<PlayerData>, ISavable
@@ -13,6 +11,17 @@ public class PlayerData : MonoSingleton<PlayerData>, ISavable
 
     float _maxHealth;
 
+    public int EnnemyKilledInRun;
+
+    public float TimeToVanishSurcharge = 10f;
+
+    public Ship PlayerShip;
+
+    //Cache
+    float TimeBeforeVanishSurcharge;
+    bool tempBonusOfMissile = false;
+
+
     public int Health { get => _health; }
     public int Score { get => _score; }
     public int HighScore { get => _highScore; }
@@ -21,17 +30,6 @@ public class PlayerData : MonoSingleton<PlayerData>, ISavable
     public int TempBonusOfNumberOfMissile { get => _tempBonusOfNumberOfMissile; }
     public float MaxHealth { get => _maxHealth; }
     public int CollectedCoinInRun { get => _collectedCoinInRun; }
-
-    public int EnnemyKilledInRun;
-    public float TimeToVanishSurcharge = 10f;
-
-    public Ship PlayerShip;
-
-
-
-    //Cache
-    float TimeBeforeVanishSurcharge;
-    bool tempBonusOfMissile = false;
 
     public void Init()
     {
@@ -48,8 +46,6 @@ public class PlayerData : MonoSingleton<PlayerData>, ISavable
         if (tempBonusOfMissile)
         {
             TimeBeforeVanishSurcharge -= Time.deltaTime;
-
-            //Faire afficher le Chronoou juste start un dotween qui dure 15f
 
             if (TimeBeforeVanishSurcharge <= 0)
             {

@@ -1,6 +1,4 @@
 using BaseTemplate.Behaviours;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +12,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         gameState = GameState.MENU;
 
-       LoadGame();
+        LoadGame();
 
         PlayerData.Instance.Init();
 

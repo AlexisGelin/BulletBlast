@@ -1,7 +1,5 @@
 using BaseTemplate.Behaviours;
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,13 +12,9 @@ public class PlayerController : MonoSingleton<PlayerController>
     [SerializeField] ParticleSystem _onDestroyParticle, _onHitParticle, _ringWhenHit;
     [SerializeField] Collider2D _coll;
 
-
-
-    //Data
-
     //Cache
     Vector3 mousePos, worldPos;
-    bool _isEnter = false;
+    bool _isEnterInPlayGame = false;
     float _nextFire = 0;
 
     int _BurstHitParticles;
@@ -35,7 +29,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     // Update is called once per frame
     void Update()
     {
-        if (_isEnter == false) return;
+        if (_isEnterInPlayGame == false) return;
 
         #region PlayerFollowMouse
         mousePos = Mouse.current.position.ReadValue();
@@ -52,7 +46,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     void FixedUpdate()
     {
-        if (_isEnter == false) return;
+        if (_isEnterInPlayGame == false) return;
 
         Vector3 desiredPosition = new Vector3(worldPos.x, worldPos.y, transform.position.z);
         Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, PlayerData.Instance.PlayerShip.MoveSpeed);
@@ -95,7 +89,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     void EnterLevelAnimation()
     {
-        transform.DOMoveY(WorldManager.Instance._afterStartTranform.position.y, 1f).SetEase(Ease.OutSine).OnComplete(() => _isEnter = true);
+        transform.DOMoveY(WorldManager.Instance._afterStartTranform.position.y, 1f).SetEase(Ease.OutSine).OnComplete(() => _isEnterInPlayGame = true);
     }
 
     public void TakeDamage(bool oneShot = false)

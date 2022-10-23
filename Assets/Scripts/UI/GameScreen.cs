@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -54,6 +53,6 @@ public class GameScreen : MonoBehaviour
 
         surchargeBar.TimeToSlide = PlayerData.Instance.TimeToVanishSurcharge;
 
-        surchargeBar.SetBar(0,true);
+        surchargeBar.SetBar(0, true);
     }
 }
