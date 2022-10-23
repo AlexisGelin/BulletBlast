@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EndScreen : MonoBehaviour
 {
-    [SerializeField] TMP_Text _score, _ennemyKilled, _coinCollected;
+    [SerializeField] TMP_Text _score, _highScore, _ennemyKilled, _coinCollected;
 
     PlayerData playerData;
 
@@ -19,6 +19,7 @@ public class EndScreen : MonoBehaviour
     public void UpdateScore()
     {
         _score.text = playerData.Score.ToString();
+        _highScore.text = "HighScore : " + playerData.HighScore;
     }
 
     public void UpdateEnnemyKilled()

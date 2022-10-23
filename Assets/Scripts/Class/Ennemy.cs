@@ -41,6 +41,8 @@ public class Ennemy : MonoBehaviour
 
     void Shoot()
     {
+        if (_health <= 0) return;
+
         if (ennemyShipData.NumberOfMissile == 1)
         {
             InitBullet();

@@ -4857,6 +4857,10 @@ PrefabInstance:
       propertyPath: isMeteor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4296245975221527697, guid: 7df15cefcde05754f86d12ad9e23818c, type: 3}
+      propertyPath: EnnemyType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4489767394995453099, guid: 7df15cefcde05754f86d12ad9e23818c, type: 3}
       propertyPath: m_Sprite
       value: 

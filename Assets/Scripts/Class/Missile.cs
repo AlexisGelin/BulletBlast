@@ -29,11 +29,8 @@ public class Missile : MonoBehaviour
             }
         }
 
-        if (collision.tag == "WorldBorder")
-        {
-            Debug.Log("WorldBorder");
-            RecycleBullet();
-        }
+        if (collision.tag == "WorldBorder") RecycleBullet();
+        
     }
 
     public void RecycleBullet()
